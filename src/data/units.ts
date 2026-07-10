@@ -14,8 +14,10 @@ export interface Unit {
   image: string;
   address: string;
   cep: string;
-  /** Link do Google Maps (pesquisa pelo endereço). */
+  /** Link do Google Maps (pesquisa pelo endereço) — usado como fallback. */
   mapsQuery: string;
+  /** Link oficial do Google Meu Negócio da unidade (botão "Como chegar"). */
+  mapsUrl: string;
   hours: UnitHours[];
 }
 
@@ -28,6 +30,7 @@ export const units: Unit[] = [
     address: 'Rua General Pereira da Silva, 184, Icaraí, Niterói/RJ',
     cep: '24220-031',
     mapsQuery: 'Rua General Pereira da Silva, 184, Icaraí, Niterói RJ 24220-031',
+    mapsUrl: 'https://maps.app.goo.gl/V9sRPLP1e2W99M4a7',
     hours: [
       { labelKey: 'weekdays', value: '08:00 – 20:00' },
       { labelKey: 'saturday', value: '08:00 – 18:00' },
@@ -42,6 +45,7 @@ export const units: Unit[] = [
     address: 'R. Visc. de Pirajá, 365 B — dentro da Academia BodyTech, Ipanema, Rio de Janeiro/RJ',
     cep: '22410-003',
     mapsQuery: 'BodyTech Visconde de Pirajá 365 Ipanema Rio de Janeiro RJ 22410-003',
+    mapsUrl: 'https://maps.app.goo.gl/gzqNUwfhEjLdG8E46',
     hours: [
       { labelKey: 'weekdays', value: '09:00 – 21:00' },
       { labelKey: 'satHoliday', value: '09:00 – 18:00' },
@@ -56,6 +60,7 @@ export const units: Unit[] = [
     address: 'R. Gen. Urquiza, 102 — Cobertura, dentro da Academia BodyTech, Leblon, Rio de Janeiro/RJ',
     cep: '22431-040',
     mapsQuery: 'BodyTech General Urquiza 102 Leblon Rio de Janeiro RJ',
+    mapsUrl: 'https://maps.app.goo.gl/WT3uotVp9J5r8Cj58',
     hours: [
       { labelKey: 'weekdays', value: '09:00 – 21:00' },
       { labelKey: 'saturday', value: '09:00 – 18:00' },
@@ -70,6 +75,7 @@ export const units: Unit[] = [
     address: 'O2 Corporate & Offices — Av. José Silva de Azevedo Neto, 200, bloco 09, dentro da Academia BodyTech, Barra da Tijuca, Rio de Janeiro/RJ',
     cep: '22775-056',
     mapsQuery: 'O2 Corporate Av. José Silva de Azevedo Neto 200 Barra da Tijuca Rio de Janeiro',
+    mapsUrl: 'https://maps.app.goo.gl/n4SQ71u5rn5Bdo2D6',
     hours: [
       { labelKey: 'weekdays', value: '08:00 – 20:00' },
       { labelKey: 'saturday', value: '08:00 – 14:00' },
@@ -84,6 +90,7 @@ export const units: Unit[] = [
     address: 'Av. Embaixador Abelardo Bueno, 2710 — Rooftop, Barra da Tijuca, Rio de Janeiro/RJ',
     cep: '22775-040',
     mapsQuery: 'Hotel Venit Av. Embaixador Abelardo Bueno 2710 Barra da Tijuca Rio de Janeiro',
+    mapsUrl: 'https://maps.app.goo.gl/t4ynh7r3F1umND379',
     hours: [
       { labelKey: 'weekdays', value: '09:00 – 21:00' },
       { labelKey: 'satHoliday', value: '09:00 – 21:00' },

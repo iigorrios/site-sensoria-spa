@@ -81,7 +81,7 @@ export default async function UnitsPage({
 
                   <div className="mt-8 flex flex-wrap gap-3">
                     <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(u.mapsQuery)}`}
+                      href={u.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-cursor="hover"
