@@ -32,10 +32,8 @@ export async function generateMetadata({
     },
     description: t('homeDescription'),
     icons: {
-      icon: [
-        { url: '/images/logo/simbolo.svg', type: 'image/svg+xml' },
-      ],
-      apple: '/images/logo/simbolo.svg',
+      icon: [{ url: '/images/logo/simbolo.png', type: 'image/png' }],
+      apple: '/images/logo/simbolo.png',
     },
     openGraph: {
       title: t('homeTitle'),

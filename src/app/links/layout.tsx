@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: `${siteConfig.name} — ${siteConfig.tagline}. Agende sua experiência, conheça nossas Terapias e Jornadas Sensoriais.`,
   robots: { index: true, follow: true },
   icons: {
-    icon: [{ url: '/images/logo/simbolo.svg', type: 'image/svg+xml' }],
-    apple: '/images/logo/simbolo.svg',
+    icon: [{ url: '/images/logo/simbolo.png', type: 'image/png' }],
+    apple: '/images/logo/simbolo.png',
   },
 };
 

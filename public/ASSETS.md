@@ -69,10 +69,14 @@ Proporção recomendada **4:5** (retrato), ~1000×1250px.
 `sopro-restaurador.jpg` · `pureza.jpg` · `sal-e-ervas.jpg` · `celeridade.jpg` ·
 `curva.jpg` · `aura.jpg` · `libelula.jpg` · `orla.jpg` · `equilibrio.jpg`
 
-**Jornadas exclusivas — Hotel Venit** — `public/images/experiences/venit/`
-`five-senses.jpg` · `sensorial-journey.jpg` · `renewal-ritual.jpg` ·
-`body-soul-cleanse.jpg` · `memorial-moments.jpg`
-*(mesma proporção 4:5, ~1000×1250px — usadas na seção "Exclusivas do Hotel Venit" da página /jornadas.)*
+**Jornadas exclusivas — Hotel Venit** — `public/images/experiences/venit/` ✅ incluídas
+`five-senses.png` · `sensorial-journey.png` · `renewal-ritual.png` ·
+`body-soul-cleanse.png` · `memorial-moments.png`
+*(proporção 4:5 — usadas na seção "Exclusivas do Hotel Venit" da página /jornadas.)*
+
+**Hotel Venit — imagem da gastronomia (by Matera)** — `public/images/venit/`
+`gastronomia.jpg` — foto lifestyle (ex.: o brinde no rooftop). Proporção **16:9**
+(paisagem), ~1600×900px. Aparece na seção "Menu Sensória by Matera".
 
 ## 🎯 Fotos das Landing Pages (Terapias e Jornadas)
 Imagens de destaque (hero) das páginas `/terapias` e `/jornadas` — também usadas
@@ -93,6 +97,12 @@ Proporção **3:2** (paisagem), ~1200×800px. `public/images/units/`
 ## ✨ Galeria (uso livre em home/sobre)
 `public/images/gallery/`
 `ambiente.jpg` (4:3) e demais fotos que quiser destacar.
+
+## 🎋 Detalhe decorativo — skyline do Rio (Pão de Açúcar + Cristo)
+`public/images/decor/`
+`icone-rj.svg` — o desenho em linha (verde claro) que aparece **encostado na borda
+inferior**, logo acima do rodapé, em todas as páginas. SVG de preferência (linha fina,
+fundo transparente). Enquanto não existir, aparece só uma faixa branca discreta.
 
 ---
 

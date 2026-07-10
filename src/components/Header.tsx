@@ -56,7 +56,7 @@ export default function Header() {
           <img
             src={solid ? '/images/logo/logo-verde-crop.svg' : '/images/logo/logo-branco-crop.svg'}
             alt="Sensória Spa"
-            className="h-8 w-auto md:h-10"
+            className="h-10 w-auto md:h-12"
           />
         </Link>
 

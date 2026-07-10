@@ -3,6 +3,7 @@ import { Check } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/motion/Reveal';
 import ExperienceCard from '@/components/ExperienceCard';
+import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import { formatBRL } from '@/lib/utils';
 import { venitJornadas, type Locale } from '@/data/experiences';
 import { venitIncludes, materaMeals, materaMenu } from '@/data/venit';
@@ -62,8 +63,19 @@ export default async function VenitSection() {
             className="mx-auto"
           />
 
+          {/* Imagem da experiência gastronômica */}
+          <div className="relative mx-auto mt-12 aspect-[16/9] max-w-4xl overflow-hidden rounded-3xl">
+            <ImagePlaceholder
+              src="/images/venit/gastronomia.jpg"
+              alt="Experiência gastronômica Sensória by Matera Restaurant"
+              fill
+              sizes="(max-width:768px) 100vw, 56rem"
+              className="h-full w-full"
+            />
+          </div>
+
           {/* Breakfast / Brunch */}
-          <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
+          <div className="mx-auto mt-8 grid max-w-4xl gap-6 sm:grid-cols-2">
             {materaMeals.map((meal) => (
               <Reveal key={meal.key} className="flex h-full flex-col rounded-2xl border border-sensoria-fog p-7">
                 <div className="flex items-baseline justify-between gap-4">

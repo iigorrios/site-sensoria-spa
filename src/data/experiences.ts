@@ -634,7 +634,7 @@ export const venitJornadas: Experience[] = [
   {
     slug: 'five-senses',
     category: 'jornada',
-    image: '/images/experiences/venit/five-senses.jpg',
+    image: '/images/experiences/venit/five-senses.png',
     exclusive: VENIT_BADGE,
     name: { pt: 'Five Senses', en: 'Five Senses', es: 'Five Senses' },
     subtitle: {
@@ -657,7 +657,7 @@ export const venitJornadas: Experience[] = [
   {
     slug: 'sensorial-journey',
     category: 'jornada',
-    image: '/images/experiences/venit/sensorial-journey.jpg',
+    image: '/images/experiences/venit/sensorial-journey.png',
     exclusive: VENIT_BADGE,
     name: { pt: 'Sensorial Journey', en: 'Sensorial Journey', es: 'Sensorial Journey' },
     subtitle: {
@@ -680,7 +680,7 @@ export const venitJornadas: Experience[] = [
   {
     slug: 'renewal-ritual',
     category: 'jornada',
-    image: '/images/experiences/venit/renewal-ritual.jpg',
+    image: '/images/experiences/venit/renewal-ritual.png',
     exclusive: VENIT_BADGE,
     name: { pt: 'Renewal Ritual', en: 'Renewal Ritual', es: 'Renewal Ritual' },
     subtitle: {
@@ -703,7 +703,7 @@ export const venitJornadas: Experience[] = [
   {
     slug: 'body-soul-cleanse',
     category: 'jornada',
-    image: '/images/experiences/venit/body-soul-cleanse.jpg',
+    image: '/images/experiences/venit/body-soul-cleanse.png',
     exclusive: VENIT_BADGE,
     name: { pt: 'Body & Soul Cleanse', en: 'Body & Soul Cleanse', es: 'Body & Soul Cleanse' },
     subtitle: {
@@ -726,7 +726,7 @@ export const venitJornadas: Experience[] = [
   {
     slug: 'memorial-moments',
     category: 'jornada',
-    image: '/images/experiences/venit/memorial-moments.jpg',
+    image: '/images/experiences/venit/memorial-moments.png',
     exclusive: VENIT_BADGE,
     name: { pt: 'Memorial Moments', en: 'Memorial Moments', es: 'Memorial Moments' },
     subtitle: {
