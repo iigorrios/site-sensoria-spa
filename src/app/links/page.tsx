@@ -22,8 +22,9 @@ export default function LinksPage() {
     <main className="flex min-h-screen flex-col items-center bg-sensoria-green px-5 py-14 text-sensoria-white">
       <div className="flex w-full max-w-md flex-col items-center">
         {/* Cabeçalho */}
-        <span className="font-display text-4xl tracking-display">Sensória</span>
-        <p className="mt-2 font-sans text-xs uppercase tracking-wide3 text-sensoria-cream">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/logo/logo-branco-crop.svg" alt="Sensória Spa" className="h-16 w-auto" />
+        <p className="mt-3 font-sans text-xs uppercase tracking-wide3 text-sensoria-cream">
           {siteConfig.tagline}
         </p>
 

@@ -22,7 +22,8 @@ export default function Footer() {
       <div className="container-editorial py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
-            <span className="font-display text-4xl tracking-display">Sensória</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/logo/logo-branco-crop.svg" alt="Sensória Spa" className="h-12 w-auto md:h-14" />
             <p className="mt-2 font-sans text-sm italic text-sensoria-fog">
               {t('footer.tagline')}
             </p>

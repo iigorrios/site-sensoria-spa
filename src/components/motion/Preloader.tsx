@@ -29,14 +29,14 @@ export default function Preloader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }}
         >
-          <motion.span
-            className="font-display text-5xl tracking-display text-sensoria-white md:text-7xl"
-            initial={{ opacity: 0, letterSpacing: '0.3em' }}
-            animate={{ opacity: 1, letterSpacing: '0.02em' }}
+          <motion.img
+            src="/images/logo/logo-branco-crop.svg"
+            alt="Sensória Spa"
+            className="h-16 w-auto md:h-24"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-          >
-            Sensória
-          </motion.span>
+          />
         </motion.div>
       )}
     </AnimatePresence>

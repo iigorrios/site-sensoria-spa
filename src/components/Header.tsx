@@ -50,15 +50,13 @@ export default function Header() {
       )}
     >
       <div className="container-editorial flex h-16 items-center justify-between md:h-20">
-        <Link
-          href="/"
-          data-cursor="hover"
-          className={cn(
-            'font-display text-2xl tracking-display transition-colors md:text-3xl',
-            solid ? 'text-sensoria-green' : 'text-sensoria-white'
-          )}
-        >
-          Sensória
+        <Link href="/" data-cursor="hover" aria-label="Sensória Spa — início" className="flex items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={solid ? '/images/logo/logo-verde-crop.svg' : '/images/logo/logo-branco-crop.svg'}
+            alt="Sensória Spa"
+            className="h-8 w-auto md:h-10"
+          />
         </Link>
 
         {/* Nav desktop */}
@@ -113,7 +111,8 @@ export default function Header() {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="flex items-center justify-between">
-              <span className="font-display text-2xl text-sensoria-white">Sensória</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/logo/logo-branco-crop.svg" alt="Sensória Spa" className="h-8 w-auto" />
               <button onClick={() => setMenuOpen(false)} aria-label={t('close')} className="text-sensoria-white">
                 <X className="h-6 w-6" />
               </button>
