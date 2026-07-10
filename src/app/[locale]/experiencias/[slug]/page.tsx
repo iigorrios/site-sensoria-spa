@@ -4,11 +4,10 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowLeft, Check, Clock } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import LeadDialog from '@/components/LeadDialog';
 import Reveal from '@/components/motion/Reveal';
 import { formatBRL } from '@/lib/utils';
 import { allExperiences, getExperienceBySlug, type Locale } from '@/data/experiences';
-import { whatsappMessages } from '@/lib/whatsapp';
 import { routing } from '@/i18n/routing';
 
 export function generateStaticParams() {
@@ -145,9 +144,11 @@ export default async function ExperienceDetailPage({
               ))}
             </ul>
             <div className="mt-6">
-              <WhatsAppButton
+              <LeadDialog
                 label={tc('bookWhatsapp')}
-                message={whatsappMessages.experience(exp.name[l], l)}
+                context={exp.category}
+                defaultExperience={exp.name[l]}
+                source="experiencia-detalhe"
                 variant="green"
                 className="w-full justify-center"
               />

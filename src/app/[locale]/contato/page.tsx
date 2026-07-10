@@ -3,10 +3,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Instagram, Mail, MessageCircle } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ContactForm from '@/components/ContactForm';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import LeadDialog from '@/components/LeadDialog';
 import { siteConfig } from '@/config/site';
 import { units } from '@/data/units';
-import { whatsappMessages } from '@/lib/whatsapp';
 import type { Locale } from '@/data/experiences';
 
 export async function generateMetadata({
@@ -45,7 +44,7 @@ export default async function ContactPage({
               <h3 className="mt-4 font-display text-2xl tracking-display">WhatsApp</h3>
               <p className="mt-2 text-sm text-sensoria-white/80">{t('description')}</p>
               <div className="mt-6">
-                <WhatsAppButton label={tc('talkWhatsapp')} message={whatsappMessages.general[l]} variant="primary" />
+                <LeadDialog label={tc('talkWhatsapp')} source="contato-aside" variant="primary" />
               </div>
 
               <div className="mt-8 flex flex-col gap-3 border-t border-white/15 pt-6 text-sm">

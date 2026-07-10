@@ -25,7 +25,6 @@ export default function TerapiasLandingPage({
       source="lp-terapias"
       experiences={terapias}
       heroImage="/images/lp/terapias.jpg"
-      locale={locale}
     />
   );
 }

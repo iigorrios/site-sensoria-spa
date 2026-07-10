@@ -14,6 +14,10 @@
   },
   "lead": {
     "cta": "Book my session",
+    "redirecting": "Redirecting to WhatsApp…",
+    "dialogTitle": "Book your experience",
+    "dialogText": "Fill in your details and continue the conversation on WhatsApp.",
+    "close": "Close",
     "privacy": "Your data is safe and will never be shared."
   },
   "lp": {

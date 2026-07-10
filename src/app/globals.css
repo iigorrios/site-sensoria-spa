@@ -3,33 +3,114 @@
 @tailwind utilities;
 
 /*
-  Fontes da marca (licenciadas — o usuário insere os arquivos em /public/fonts).
-  Enquanto os .woff2 não existem, os fallbacks (Inter / Cormorant via next/font)
-  assumem automaticamente. Ver public/ASSETS.md.
+  Fontes da marca (licenciadas — arquivos completos em /public/fonts).
+  Versão completa (não-DEMO): possui acentos e números. Cada arquivo .otf é um
+  peso; o navegador só baixa os pesos realmente usados. Ver public/ASSETS.md.
+
+  Galano Classic  → texto (--font-sans)
+  Alga            → títulos/display (--font-display)
 */
+
+/* ---- Galano Classic (texto) ---- */
 @font-face {
   font-family: 'Galano Classic';
-  /* Aceita .woff2 (mais leve) ou .otf — o navegador usa o primeiro que existir. */
-  src:
-    url('/fonts/Galano-Classic.woff2') format('woff2'),
-    url('/fonts/Galano-Classic.otf') format('opentype');
-  font-weight: 100 900;
+  src: url('/fonts/GalanoClassicLight.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
   font-display: swap;
-  /*
-    A versão DEMO da Galano Classic não possui letras acentuadas (glifos vazios),
-    o que causava quadradinhos em palavras como "Experiências". Restringindo a
-    fonte ao ASCII, os acentos usam a fonte fallback (Inter) — sem quadradinhos.
-    ▶ Ao instalar a versão COMPLETA/licenciada da Galano, REMOVA a linha abaixo
-      para que os acentos usem a própria Galano.
-  */
-  unicode-range: U+0000-007F;
+}
+@font-face {
+  font-family: 'Galano Classic';
+  src: url('/fonts/GalanoClassicRegular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Galano Classic';
+  src: url('/fonts/GalanoClassicItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Galano Classic';
+  src: url('/fonts/GalanoClassicMedium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Galano Classic';
+  src: url('/fonts/GalanoClassicSemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Galano Classic';
+  src: url('/fonts/GalanoClassicBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Galano Classic';
+  src: url('/fonts/GalanoClassicBoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Galano Classic';
+  src: url('/fonts/GalanoClassicExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Alga (títulos/display) ---- */
+@font-face {
+  font-family: 'Alga';
+  src: url('/fonts/fonnts.com-Alga-Extralight-.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Alga';
-  src:
-    url('/fonts/Alga.woff2') format('woff2'),
-    url('/fonts/Alga.otf') format('opentype');
-  font-weight: 300 700;
+  src: url('/fonts/fonnts.com-Alga-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  /* Não há regular upright limpo na família; Medium é o upright de referência. */
+  font-family: 'Alga';
+  src: url('/fonts/fonnts.com-Alga-Medium.otf') format('opentype');
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Alga';
+  src: url('/fonts/Alga.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Alga';
+  src: url('/fonts/fonnts.com-Alga-Semibold-.otf') format('opentype');
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Alga';
+  src: url('/fonts/fonnts.com-Alga-Semibold-Italic.otf') format('opentype');
+  font-weight: 600 700;
+  font-style: italic;
   font-display: swap;
 }
 

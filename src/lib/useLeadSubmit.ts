@@ -5,7 +5,7 @@ import { getAttribution, getMetaCookies, newEventId } from '@/lib/tracking';
 import { trackLead } from '@/components/MetaPixel';
 import type { ContactInput } from '@/lib/contact-schema';
 
-export type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error';
+export type SubmitStatus = 'idle' | 'submitting' | 'success' | 'redirecting' | 'error';
 
 /**
  * Envia um lead: injeta atribuição (UTMs + cookies do Meta), gera event_id,

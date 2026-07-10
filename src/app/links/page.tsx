@@ -1,7 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { socialItems } from '@/components/ui/SocialLinks';
-import { whatsappLink, whatsappMessages } from '@/lib/whatsapp';
 
 /** Acrescenta UTMs de link-in-bio para a atribuição fluir nos formulários. */
 function withUtm(url: string): string {
@@ -16,7 +15,8 @@ const primaryLinks = [
 ];
 
 export default function LinksPage() {
-  const whatsappHref = whatsappLink(whatsappMessages.general.pt);
+  // Agendamento passa pelo formulário do site (preserva o rastreio) antes do WhatsApp.
+  const agendarHref = withUtm('/pt#agendar');
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-sensoria-green px-5 py-14 text-sensoria-white">
@@ -43,16 +43,14 @@ export default function LinksPage() {
             </a>
           ))}
 
-          {/* WhatsApp */}
+          {/* Agendar (passa pelo formulário do site → WhatsApp, preservando o rastreio) */}
           <a
-            href={whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={agendarHref}
             className="group flex items-center justify-between rounded-2xl bg-sensoria-cream px-6 py-4 text-sensoria-graphite transition-colors hover:bg-[#f4e9a8]"
           >
             <span className="flex flex-col">
-              <span className="font-display text-xl tracking-display">Agendar pelo WhatsApp</span>
-              <span className="mt-0.5 text-xs text-sensoria-graphite/70">Fale com a nossa equipe agora</span>
+              <span className="font-display text-xl tracking-display">Agendar minha experiência</span>
+              <span className="mt-0.5 text-xs text-sensoria-graphite/70">Rápido: preencha e continue no WhatsApp</span>
             </span>
             <ArrowUpRight className="h-5 w-5 flex-none transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>

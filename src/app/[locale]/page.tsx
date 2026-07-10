@@ -6,12 +6,11 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/motion/Reveal';
 import Parallax from '@/components/motion/Parallax';
 import LeadForm from '@/components/LeadForm';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import LeadDialog from '@/components/LeadDialog';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeafAccent from '@/components/ui/LeafAccent';
 import { type Locale } from '@/data/experiences';
 import { units } from '@/data/units';
-import { whatsappMessages } from '@/lib/whatsapp';
 
 export default async function HomePage({
   params: { locale },
@@ -50,7 +49,6 @@ export default async function HomePage({
         description={th('description')}
         scrollLabel={th('scroll')}
         ctaLabel={tc('bookWhatsapp')}
-        ctaMessage={whatsappMessages.general[l]}
       />
 
       {/* Intro */}
@@ -204,7 +202,7 @@ export default async function HomePage({
       </section>
 
       {/* Formulário de lead */}
-      <section className="bg-sensoria-white py-24 md:py-32">
+      <section id="agendar" className="scroll-mt-24 bg-sensoria-white py-24 md:py-32">
         <div className="container-editorial grid gap-12 md:grid-cols-2 md:items-start">
           <SectionHeading
             eyebrow={t('leadEyebrow')}
@@ -232,12 +230,7 @@ export default async function HomePage({
             </p>
           </Reveal>
           <Reveal index={2} className="mt-10">
-            <WhatsAppButton
-              label={tc('bookWhatsapp')}
-              message={whatsappMessages.general[l]}
-              size="lg"
-              variant="green"
-            />
+            <LeadDialog label={tc('bookWhatsapp')} source="home-cta" size="lg" variant="green" />
           </Reveal>
         </div>
       </section>

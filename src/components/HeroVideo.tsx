@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import LeadDialog from '@/components/LeadDialog';
 
 interface HeroVideoProps {
   eyebrow: string;
@@ -12,7 +12,6 @@ interface HeroVideoProps {
   description: string;
   scrollLabel: string;
   ctaLabel: string;
-  ctaMessage: string;
 }
 
 const wordVariants = {
@@ -52,7 +51,6 @@ export default function HeroVideo({
   description,
   scrollLabel,
   ctaLabel,
-  ctaMessage,
 }: HeroVideoProps) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -117,7 +115,7 @@ export default function HeroVideo({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <WhatsAppButton label={ctaLabel} message={ctaMessage} size="lg" variant="primary" />
+            <LeadDialog label={ctaLabel} source="home-hero" size="lg" variant="primary" />
           </motion.div>
         </div>
       </motion.div>

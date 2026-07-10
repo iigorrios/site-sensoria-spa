@@ -35,16 +35,19 @@ Formatos recomendados: **JPG/WebP** para fotos, **MP4/WebM** para vídeo, **WOFF
 > Se quiser usar o áudio do seu vídeo, **extraia a trilha** dele para
 > `ambient.mp3` (qualquer editor ou conversor online faz isso).
 
-## 🔤 Fontes da marca (licenciadas)
-| Fonte | Caminho aceito |
-|---|---|
-| Galano Classic | `public/fonts/Galano-Classic.otf` **ou** `Galano-Classic.woff2` |
-| Alga | `public/fonts/Alga.otf` **ou** `Alga.woff2` |
+## 🔤 Fontes da marca (licenciadas) — ✅ já instaladas
+A família **completa** (com acentos e números) já está em `public/fonts/` e
+ligada no CSS. O site usa:
+- **Galano Classic** (texto) — pesos `Light/Regular/Medium/SemiBold/Bold/ExtraBold`
+  + itálicos (`GalanoClassicRegular.otf`, `GalanoClassicBold.otf`, …).
+- **Alga** (títulos/display) — `Extralight/Light/Medium/Semibold` + itálicos
+  (`fonnts.com-Alga-Medium.otf`, `fonnts.com-Alga-Semibold-.otf`, …).
 
-> **OTF funciona** — o site aceita `.otf` e `.woff2`. O `.woff2` é mais leve
-> (recomendado para web), mas não é obrigatório. Use exatamente esses nomes de
-> arquivo. Enquanto não estiverem presentes, o site usa fallbacks gratuitos
-> (Inter e Cormorant) e a marca assume sozinha assim que os arquivos entrarem.
+> ✅ **Acentos e números corrigidos.** A versão anterior era DEMO (glifos
+> acentuados vazios → quadradinhos). A versão completa já resolve isso — nenhum
+> ajuste é necessário. O navegador baixa apenas os pesos realmente usados.
+> Se quiser deixar mais leve para web, dá para converter os `.otf` em `.woff2`
+> (opcional).
 
 ## 🖼️ Logos (SVG de preferência)
 | Arquivo | Caminho |

@@ -14,6 +14,10 @@
   },
   "lead": {
     "cta": "Quero agendar",
+    "redirecting": "Redirecionando para o WhatsApp…",
+    "dialogTitle": "Agende a sua experiência",
+    "dialogText": "Preencha seus dados e continue a conversa no WhatsApp.",
+    "close": "Fechar",
     "privacy": "Seus dados estão seguros e não serão compartilhados."
   },
   "lp": {

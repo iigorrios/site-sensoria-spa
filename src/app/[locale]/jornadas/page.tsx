@@ -25,7 +25,6 @@ export default function JornadasLandingPage({
       source="lp-jornadas"
       experiences={jornadas}
       heroImage="/images/lp/jornadas.jpg"
-      locale={locale}
     />
   );
 }

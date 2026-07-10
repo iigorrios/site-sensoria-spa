@@ -4,9 +4,8 @@ import { MapPin, Navigation } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/motion/Reveal';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import LeadDialog from '@/components/LeadDialog';
 import { units } from '@/data/units';
-import { whatsappMessages } from '@/lib/whatsapp';
 import type { Locale } from '@/data/experiences';
 
 export async function generateMetadata({
@@ -91,9 +90,10 @@ export default async function UnitsPage({
                       <Navigation className="h-4 w-4" />
                       {tc('getDirections')}
                     </a>
-                    <WhatsAppButton
+                    <LeadDialog
                       label={tc('bookWhatsapp')}
-                      message={whatsappMessages.unit(u.name, l)}
+                      source="unidades"
+                      defaultUnit={u.name}
                       variant="green"
                     />
                   </div>

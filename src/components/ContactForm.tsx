@@ -9,12 +9,14 @@ import { contactSchema, type ContactInput } from '@/lib/contact-schema';
 import { useLeadSubmit } from '@/lib/useLeadSubmit';
 import { units } from '@/data/units';
 import { allExperiences, type Locale } from '@/data/experiences';
+import { whatsappLink, whatsappMessages } from '@/lib/whatsapp';
 import { cn } from '@/lib/utils';
 
 export default function ContactForm() {
   const t = useTranslations('contact.form');
+  const tl = useTranslations('lead');
   const locale = useLocale() as Locale;
-  const { status, submit } = useLeadSubmit();
+  const { status, submit, setStatus } = useLeadSubmit();
 
   const {
     register,
@@ -28,7 +30,19 @@ export default function ContactForm() {
 
   const onSubmit = async (data: ContactInput) => {
     const ok = await submit(data, { origem: 'contato' });
-    if (ok) reset();
+    if (!ok) return;
+    // Captura o lead e, em seguida, leva a conversa para o WhatsApp.
+    const url = whatsappLink(
+      whatsappMessages.lead(
+        { nome: data.nome, experiencia: data.experiencia, unidade: data.unidade },
+        locale
+      )
+    );
+    reset();
+    setStatus('redirecting');
+    setTimeout(() => {
+      window.location.href = url;
+    }, 800);
   };
 
   const fieldClass =
@@ -117,20 +131,20 @@ export default function ContactForm() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
         <button
           type="submit"
-          disabled={status === 'submitting'}
+          disabled={status === 'submitting' || status === 'redirecting'}
           data-cursor="hover"
           className="inline-flex h-12 items-center justify-center rounded-full bg-sensoria-green px-8 font-sans text-sm font-medium text-sensoria-white transition-colors hover:bg-[#516353] disabled:opacity-60"
         >
-          {status === 'submitting' ? t('submitting') : t('submit')}
+          {status === 'submitting' || status === 'redirecting' ? t('submitting') : t('submit')}
         </button>
 
-        {status === 'success' && (
+        {(status === 'success' || status === 'redirecting') && (
           <motion.p
             initial={{ opacity: 0, x: -8 }}
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-2 text-sm text-sensoria-green"
           >
-            <Check className="h-4 w-4" /> {t('success')}
+            <Check className="h-4 w-4" /> {status === 'redirecting' ? tl('redirecting') : t('success')}
           </motion.p>
         )}
         {status === 'error' && (

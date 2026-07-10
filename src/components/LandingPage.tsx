@@ -4,11 +4,10 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/motion/Reveal';
 import ExperienceCard from '@/components/ExperienceCard';
 import LeadForm from '@/components/LeadForm';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import LeadDialog from '@/components/LeadDialog';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeafAccent from '@/components/ui/LeafAccent';
-import { whatsappMessages } from '@/lib/whatsapp';
-import type { Experience, Locale } from '@/data/experiences';
+import type { Experience } from '@/data/experiences';
 
 interface LandingPageProps {
   /** Chave do namespace de mensagens em `lp`. */
@@ -21,7 +20,6 @@ interface LandingPageProps {
   experiences: Experience[];
   /** Imagem de fundo do hero. */
   heroImage: string;
-  locale: string;
 }
 
 export default async function LandingPage({
@@ -30,9 +28,7 @@ export default async function LandingPage({
   source,
   experiences,
   heroImage,
-  locale,
 }: LandingPageProps) {
-  const l = locale as Locale;
   const t = await getTranslations(`lp.${ns}`);
   const te = await getTranslations('experiences');
   const tc = await getTranslations('common');
@@ -85,9 +81,10 @@ export default async function LandingPage({
               >
                 {t('formTitle')}
               </a>
-              <WhatsAppButton
+              <LeadDialog
                 label={tc('bookWhatsapp')}
-                message={whatsappMessages.category(category, l)}
+                context={category}
+                source={source}
                 variant="outlineLight"
               />
             </Reveal>
@@ -171,12 +168,7 @@ export default async function LandingPage({
             <p className="mt-5 max-w-md text-base text-sensoria-graphite/70 md:text-lg">{t('ctaText')}</p>
           </Reveal>
           <Reveal index={2} className="mt-10">
-            <WhatsAppButton
-              label={tc('bookWhatsapp')}
-              message={whatsappMessages.category(category, l)}
-              size="lg"
-              variant="green"
-            />
+            <LeadDialog label={tc('bookWhatsapp')} context={category} source={source} size="lg" variant="green" />
           </Reveal>
         </div>
       </section>

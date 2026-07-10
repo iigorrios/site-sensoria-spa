@@ -14,6 +14,10 @@
   },
   "lead": {
     "cta": "Quiero reservar",
+    "redirecting": "Redirigiendo a WhatsApp…",
+    "dialogTitle": "Reserva tu experiencia",
+    "dialogText": "Completa tus datos y continúa la conversación en WhatsApp.",
+    "close": "Cerrar",
     "privacy": "Tus datos están seguros y no serán compartidos."
   },
   "lp": {

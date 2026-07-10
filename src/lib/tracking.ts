@@ -57,8 +57,16 @@ export function captureAttribution(): void {
   }
 
   if (changed) {
+    const serialized = JSON.stringify(next);
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      localStorage.setItem(STORAGE_KEY, serialized);
+    } catch {
+      /* ignore */
+    }
+    // Espelha em cookie (90 dias) — resiliência caso o localStorage seja limpo
+    // e disponibiliza a atribuição também no servidor, se necessário.
+    try {
+      document.cookie = `${STORAGE_KEY}=${encodeURIComponent(serialized)}; path=/; max-age=${60 * 60 * 24 * 90}; SameSite=Lax`;
     } catch {
       /* ignore */
     }
@@ -69,10 +77,18 @@ export function getAttribution(): Attribution {
   if (typeof window === 'undefined') return {};
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as Attribution) : {};
+    if (raw) return JSON.parse(raw) as Attribution;
   } catch {
-    return {};
+    /* ignore */
   }
+  // Fallback: cookie (caso o localStorage tenha sido limpo entre páginas).
+  try {
+    const cookie = readCookie(STORAGE_KEY);
+    if (cookie) return JSON.parse(cookie) as Attribution;
+  } catch {
+    /* ignore */
+  }
+  return {};
 }
 
 /** Lê um cookie pelo nome. */
