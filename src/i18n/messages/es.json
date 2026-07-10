@@ -109,7 +109,10 @@
     "ctaText": "Elige tu experiencia. Nosotros nos ocupamos del resto.",
     "philosophyEyebrow": "Nuestro compromiso",
     "philosophyTitle": "100% natural, vegano y cruelty-free",
-    "philosophyText": "Formulaciones exclusivas con insumos naturales de nuestra biodiversidad, probadas en pureza y eficacia. Bienestar que te respeta a ti y al planeta."
+    "philosophyText": "Formulaciones exclusivas con insumos naturales de nuestra biodiversidad, probadas en pureza y eficacia. Bienestar que te respeta a ti y al planeta.",
+    "shopEyebrow": "Tienda online",
+    "shopText": "Lleva Sensória a casa. Conoce nuestros productos naturales en la tienda online oficial.",
+    "shopCta": "Conocer la tienda online"
   },
   "experiences": {
     "eyebrow": "Experiencias",

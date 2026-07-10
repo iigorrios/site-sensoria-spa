@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { ArrowRight, ArrowUpRight, Leaf, Sparkles, HandHeart } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Leaf, Sparkles, HandHeart, ShoppingBag } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import HeroVideo from '@/components/HeroVideo';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -7,8 +7,10 @@ import Reveal from '@/components/motion/Reveal';
 import Parallax from '@/components/motion/Parallax';
 import LeadForm from '@/components/LeadForm';
 import LeadDialog from '@/components/LeadDialog';
+import MagneticButton from '@/components/ui/MagneticButton';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeafAccent from '@/components/ui/LeafAccent';
+import { siteConfig } from '@/config/site';
 import { type Locale } from '@/data/experiences';
 import { units } from '@/data/units';
 
@@ -173,6 +175,22 @@ export default async function HomePage({
                 </Reveal>
               ))}
             </div>
+
+            {/* CTA para o e-commerce */}
+            <Reveal index={3} className="mt-10 border-t border-white/15 pt-8">
+              <p className="max-w-md text-sm leading-relaxed text-sensoria-white/80">
+                {t('shopText')}
+              </p>
+              <MagneticButton
+                href={siteConfig.ecommerce}
+                external
+                variant="primary"
+                className="mt-5"
+              >
+                <ShoppingBag className="h-4 w-4" />
+                {t('shopCta')}
+              </MagneticButton>
+            </Reveal>
           </div>
         </div>
       </section>

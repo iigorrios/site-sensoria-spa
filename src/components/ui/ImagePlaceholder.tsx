@@ -29,7 +29,10 @@ export default function ImagePlaceholder(props: ImagePlaceholderProps) {
   return (
     <div
       className={cn(
-        'relative flex items-center justify-center overflow-hidden bg-sensoria-fog',
+        // `isolate` cria um contexto de empilhamento próprio: o z-10 interno da
+        // imagem fica contido aqui e NÃO cobre degradês/textos sobrepostos por
+        // fora (banners com texto por cima). Ver LP/hero/cards.
+        'relative isolate flex items-center justify-center overflow-hidden bg-sensoria-fog',
         className
       )}
     >

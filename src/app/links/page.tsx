@@ -1,4 +1,4 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, ShoppingBag } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { socialItems } from '@/components/ui/SocialLinks';
 
@@ -53,6 +53,25 @@ export default function LinksPage() {
               <span className="mt-0.5 text-xs text-sensoria-graphite/70">Rápido: preencha e continue no WhatsApp</span>
             </span>
             <ArrowUpRight className="h-5 w-5 flex-none transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+
+          {/* Loja online (e-commerce) — botão dedicado */}
+          <a
+            href={withUtm(siteConfig.ecommerce)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-4 rounded-2xl border border-sensoria-cream/40 bg-sensoria-cream/10 px-6 py-4 transition-colors hover:bg-sensoria-cream/20"
+          >
+            <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-sensoria-cream text-sensoria-graphite">
+              <ShoppingBag className="h-5 w-5" />
+            </span>
+            <span className="flex flex-1 flex-col">
+              <span className="font-display text-xl tracking-display">Loja Online</span>
+              <span className="mt-0.5 text-xs text-sensoria-white/70">
+                Nossos produtos naturais no e-commerce oficial
+              </span>
+            </span>
+            <ArrowUpRight className="h-5 w-5 flex-none text-sensoria-cream transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </nav>
 
