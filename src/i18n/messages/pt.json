@@ -4,6 +4,7 @@
     "experiences": "Experiências",
     "terapias": "Terapias",
     "jornadas": "Jornadas",
+    "clubes": "Clubes",
     "units": "Unidades",
     "about": "Quem Somos",
     "faq": "Dúvidas",
@@ -188,8 +189,66 @@
       "3": { "q": "Vocês têm vale-presente?", "a": "Temos o Vale-Presente Sensória: você escolhe a sessão e a gente cuida do resto. É o presente que fica na memória. Solicite pelo WhatsApp." },
       "4": { "q": "Os produtos são naturais?", "a": "Sim. Somos totalmente veganos, com formulações 100% naturais, eco-friendly e cruelty-free, desenvolvidas com matérias-primas selecionadas da nossa biodiversidade." },
       "5": { "q": "Em quais unidades vocês atendem?", "a": "Estamos em cinco endereços: Icaraí (Niterói), Ipanema, Leblon, Península (Barra da Tijuca) e Barra – Hotel Venit. Consulte endereços e horários na página de Unidades." },
-      "6": { "q": "Qual a política de agendamento e cancelamento?", "a": "Recomendamos agendar com antecedência para garantir horário e unidade. Para remarcações e cancelamentos, fale com a nossa equipe pelo WhatsApp com o máximo de antecedência possível." }
+      "6": { "q": "Qual a política de agendamento e cancelamento?", "a": "Recomendamos agendar com antecedência para garantir horário e unidade. Para remarcações e cancelamentos, fale com a nossa equipe pelo WhatsApp com o máximo de antecedência possível." },
+      "7": { "q": "O que é o Grounding Ritual?", "a": "É o escalda-pés ritualístico que dá início a toda Jornada e Terapia Sensória: água morna com sais terapêuticos (integral e Epsom), camomila e óleo essencial exclusivo, seguido de reflexologia nos pés e massagem nas panturrilhas. Promove relaxamento profundo, limpeza energética e prepara corpo e mente para a experiência. Dura de 10 a 15 minutos." }
     }
+  },
+  "grounding": {
+    "title": "Grounding Ritual",
+    "subtitle": "O ritual que inicia a sua experiência",
+    "intro": "Um escalda-pés ritualístico de aterramento (grounding) que abre toda Jornada e Terapia Sensória — o primeiro momento de conexão e relaxamento profundo.",
+    "points": {
+      "0": "Água morna com sais terapêuticos (integral e Epsom) e camomila",
+      "1": "Aromaterapia com óleo essencial exclusivo Sensória",
+      "2": "Reflexologia nos pés e massagem nas panturrilhas",
+      "3": "Limpeza energética: libera tensões e prepara corpo e mente"
+    },
+    "duration": "Duração: 10 a 15 min",
+    "close": "Fechar",
+    "aria": "Saiba mais sobre o Grounding Ritual"
+  },
+  "venit": {
+    "badge": "Exclusivo Hotel Venit",
+    "eyebrow": "Sensória Spa · Hotel Venit — Barra",
+    "title": "Jornadas Exclusivas do Hotel Venit",
+    "text": "Pacotes completos de experiência no nosso spa dentro do Hotel Venit, na Barra — com estacionamento cortesia e gastronomia assinada pelo Matera Restaurant.",
+    "includedTitle": "Todas as jornadas do Hotel Venit incluem",
+    "gastronomyEyebrow": "Gastronomia",
+    "gastronomyTitle": "Menu Sensória by Matera Restaurant",
+    "gastronomyText": "A experiência gastronômica que coroa as jornadas do Hotel Venit.",
+    "menu": {
+      "breakfast": "Breakfast",
+      "brunch": "Brunch",
+      "starters": "Entradas",
+      "mains": "Principais",
+      "desserts": "Sobremesas",
+      "perPerson": "por pessoa"
+    }
+  },
+  "clubes": {
+    "eyebrow": "Clubes Sensória",
+    "title": "Assine o autocuidado. Economize o ano todo.",
+    "subtitle": "Planos de sessões com vouchers cumulativos, cortesias e 15% de desconto em produtos e serviços.",
+    "benefitsTitle": "Benefícios de todos os clubes",
+    "plansTitle": "Escolha o seu clube",
+    "plansText": "Quanto maior o plano, maior o retorno em cortesias e vouchers.",
+    "mostComplete": "Mais completo",
+    "sessions": "Sessões",
+    "courtesy": "Sessões cortesia",
+    "vouchers": "Vouchers cumulativos",
+    "validity": "Validade",
+    "atSight": "À vista",
+    "installments": "Parcelado (PIX)",
+    "bonus": "Bônus PIX",
+    "returnValue": "Retorno em vantagens",
+    "days": "dias",
+    "comparisonTitle": "Custo-benefício",
+    "comparisonCol1": "Clube",
+    "comparisonCol2": "Investimento",
+    "comparisonCol3": "Retorno em vantagens",
+    "ctaTitle": "Faça parte do Clube Sensória",
+    "ctaText": "Fale com a gente pelo WhatsApp e escolha o plano ideal para você.",
+    "note": "Vouchers transferíveis e cumulativos (sem troco no uso). Benefícios válidos durante a vigência do clube."
   },
   "contact": {
     "eyebrow": "Fale Conosco",
@@ -245,6 +304,8 @@
     "terapiasTitle": "Terapias Corporais · Sensória Spa",
     "terapiasDescription": "Massagens e terapias para relaxar, aliviar tensões e recuperar o corpo. Terapia desportiva, relaxante e mais — 100% natural, no Rio e Niterói.",
     "jornadasTitle": "Jornadas Sensoriais · Sensória Spa",
-    "jornadasDescription": "Rituais sensoriais para presentear, celebrar e viver a dois. Jornadas completas 100% naturais no Rio de Janeiro e Niterói."
+    "jornadasDescription": "Rituais sensoriais para presentear, celebrar e viver a dois. Jornadas completas 100% naturais no Rio de Janeiro e Niterói.",
+    "clubesTitle": "Clubes Sensória · Sensória Spa",
+    "clubesDescription": "Planos de assinatura do Sensória Spa: sessões, vouchers cumulativos, cortesias e descontos. Clubes Gold, Safira, Platinum e Diamond."
   }
 }

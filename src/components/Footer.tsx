@@ -7,6 +7,7 @@ import { units } from '@/data/units';
 
 const navItems = [
   { href: '/experiencias', key: 'experiences' },
+  { href: '/clubes', key: 'clubes' },
   { href: '/unidades', key: 'units' },
   { href: '/sobre', key: 'about' },
   { href: '/faq', key: 'faq' },

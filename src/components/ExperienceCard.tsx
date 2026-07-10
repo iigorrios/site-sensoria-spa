@@ -36,6 +36,11 @@ export default function ExperienceCard({ exp, index = 0 }: { exp: Experience; in
               {durations[0]}
             </div>
           )}
+          {exp.exclusive && (
+            <div className="absolute left-4 top-4 rounded-full bg-sensoria-green px-3 py-1 font-sans text-[10px] font-medium uppercase tracking-wide2 text-sensoria-white">
+              {exp.exclusive[locale]}
+            </div>
+          )}
         </div>
 
         <div className="mt-5 flex items-start justify-between gap-4">

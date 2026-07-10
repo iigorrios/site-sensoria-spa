@@ -5,6 +5,7 @@ import { ArrowLeft, Check, Clock } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeadDialog from '@/components/LeadDialog';
+import GroundingText from '@/components/GroundingRitualTerm';
 import Reveal from '@/components/motion/Reveal';
 import { formatBRL } from '@/lib/utils';
 import { allExperiences, getExperienceBySlug, type Locale } from '@/data/experiences';
@@ -89,7 +90,9 @@ export default async function ExperienceDetailPage({
                 {list.map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-sensoria-graphite/80">
                     <Check className="mt-1 h-4 w-4 shrink-0 text-sensoria-green" />
-                    <span className="text-sm leading-relaxed">{item}</span>
+                    <span className="text-sm leading-relaxed">
+                      <GroundingText>{item}</GroundingText>
+                    </span>
                   </li>
                 ))}
               </ul>

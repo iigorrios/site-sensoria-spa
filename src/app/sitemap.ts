@@ -3,7 +3,7 @@ import { siteConfig } from '@/config/site';
 import { routing } from '@/i18n/routing';
 import { allExperiences } from '@/data/experiences';
 
-const staticPaths = ['', '/terapias', '/jornadas', '/experiencias', '/unidades', '/sobre', '/faq', '/contato'];
+const staticPaths = ['', '/terapias', '/jornadas', '/clubes', '/experiencias', '/unidades', '/sobre', '/faq', '/contato'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url.replace(/\/$/, '');

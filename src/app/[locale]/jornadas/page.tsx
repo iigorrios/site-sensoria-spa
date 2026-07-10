@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import LandingPage from '@/components/LandingPage';
+import VenitSection from '@/components/VenitSection';
 import { jornadas } from '@/data/experiences';
 
 export async function generateMetadata({
@@ -25,6 +26,7 @@ export default function JornadasLandingPage({
       source="lp-jornadas"
       experiences={jornadas}
       heroImage="/images/lp/jornadas.jpg"
+      extraSection={<VenitSection />}
     />
   );
 }

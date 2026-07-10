@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 const navItems = [
   { href: '/terapias', key: 'terapias' },
   { href: '/jornadas', key: 'jornadas' },
+  { href: '/clubes', key: 'clubes' },
   { href: '/experiencias', key: 'experiences' },
   { href: '/unidades', key: 'units' },
   { href: '/sobre', key: 'about' },

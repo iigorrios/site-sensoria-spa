@@ -69,6 +69,11 @@ Proporção recomendada **4:5** (retrato), ~1000×1250px.
 `sopro-restaurador.jpg` · `pureza.jpg` · `sal-e-ervas.jpg` · `celeridade.jpg` ·
 `curva.jpg` · `aura.jpg` · `libelula.jpg` · `orla.jpg` · `equilibrio.jpg`
 
+**Jornadas exclusivas — Hotel Venit** — `public/images/experiences/venit/`
+`five-senses.jpg` · `sensorial-journey.jpg` · `renewal-ritual.jpg` ·
+`body-soul-cleanse.jpg` · `memorial-moments.jpg`
+*(mesma proporção 4:5, ~1000×1250px — usadas na seção "Exclusivas do Hotel Venit" da página /jornadas.)*
+
 ## 🎯 Fotos das Landing Pages (Terapias e Jornadas)
 Imagens de destaque (hero) das páginas `/terapias` e `/jornadas` — também usadas
 nos dois cartões "Dois caminhos" da Home. Proporção **paisagem** (16:9 ou 3:2),

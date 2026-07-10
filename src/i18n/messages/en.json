@@ -4,6 +4,7 @@
     "experiences": "Experiences",
     "terapias": "Therapies",
     "jornadas": "Journeys",
+    "clubes": "Clubs",
     "units": "Locations",
     "about": "About",
     "faq": "FAQ",
@@ -188,8 +189,66 @@
       "3": { "q": "Do you offer gift cards?", "a": "We offer the Sensória Gift Card: you choose the session and we take care of the rest. It's a gift that stays in the memory. Request it on WhatsApp." },
       "4": { "q": "Are the products natural?", "a": "Yes. We are fully vegan, with 100% natural, eco-friendly and cruelty-free formulations, developed with selected raw materials from our biodiversity." },
       "5": { "q": "Which locations do you serve?", "a": "We are in five addresses: Icaraí (Niterói), Ipanema, Leblon, Península (Barra da Tijuca) and Barra – Hotel Venit. See addresses and hours on the Locations page." },
-      "6": { "q": "What is the booking and cancellation policy?", "a": "We recommend booking in advance to secure your time and location. For rescheduling and cancellations, contact our team on WhatsApp as early as possible." }
+      "6": { "q": "What is the booking and cancellation policy?", "a": "We recommend booking in advance to secure your time and location. For rescheduling and cancellations, contact our team on WhatsApp as early as possible." },
+      "7": { "q": "What is the Grounding Ritual?", "a": "It's the ritual foot bath that opens every Sensória Journey and Therapy: warm water with therapeutic salts (whole and Epsom), chamomile and an exclusive essential oil, followed by foot reflexology and calf massage. It brings deep relaxation, energetic cleansing and prepares body and mind for the experience. It lasts 10 to 15 minutes." }
     }
+  },
+  "grounding": {
+    "title": "Grounding Ritual",
+    "subtitle": "The ritual that opens your experience",
+    "intro": "A ritual grounding foot bath that opens every Sensória Journey and Therapy — the first moment of connection and deep relaxation.",
+    "points": {
+      "0": "Warm water with therapeutic salts (whole and Epsom) and chamomile",
+      "1": "Aromatherapy with an exclusive Sensória essential oil",
+      "2": "Foot reflexology and calf massage",
+      "3": "Energetic cleansing: releases tension and prepares body and mind"
+    },
+    "duration": "Duration: 10 to 15 min",
+    "close": "Close",
+    "aria": "Learn more about the Grounding Ritual"
+  },
+  "venit": {
+    "badge": "Hotel Venit exclusive",
+    "eyebrow": "Sensória Spa · Hotel Venit — Barra",
+    "title": "Hotel Venit Exclusive Journeys",
+    "text": "Complete experience packages at our spa inside Hotel Venit, in Barra — with complimentary parking and cuisine by Matera Restaurant.",
+    "includedTitle": "Every Hotel Venit journey includes",
+    "gastronomyEyebrow": "Cuisine",
+    "gastronomyTitle": "Sensória Menu by Matera Restaurant",
+    "gastronomyText": "The gastronomic experience that crowns the Hotel Venit journeys.",
+    "menu": {
+      "breakfast": "Breakfast",
+      "brunch": "Brunch",
+      "starters": "Starters",
+      "mains": "Mains",
+      "desserts": "Desserts",
+      "perPerson": "per person"
+    }
+  },
+  "clubes": {
+    "eyebrow": "Sensória Clubs",
+    "title": "Subscribe to self-care. Save all year.",
+    "subtitle": "Session plans with cumulative vouchers, complimentary sessions and 15% off products and services.",
+    "benefitsTitle": "Benefits of every club",
+    "plansTitle": "Choose your club",
+    "plansText": "The bigger the plan, the greater the return in complimentary sessions and vouchers.",
+    "mostComplete": "Most complete",
+    "sessions": "Sessions",
+    "courtesy": "Complimentary sessions",
+    "vouchers": "Cumulative vouchers",
+    "validity": "Validity",
+    "atSight": "Upfront",
+    "installments": "Installments (PIX)",
+    "bonus": "PIX bonus",
+    "returnValue": "Return in perks",
+    "days": "days",
+    "comparisonTitle": "Value for money",
+    "comparisonCol1": "Club",
+    "comparisonCol2": "Investment",
+    "comparisonCol3": "Return in perks",
+    "ctaTitle": "Join the Sensória Club",
+    "ctaText": "Message us on WhatsApp and choose the plan that's right for you.",
+    "note": "Transferable, cumulative vouchers (no change given). Benefits valid throughout the club's validity period."
   },
   "contact": {
     "eyebrow": "Get in Touch",
@@ -245,6 +304,8 @@
     "terapiasTitle": "Body Therapies · Sensória Spa",
     "terapiasDescription": "Massages and therapies to relax, release tension and restore the body. Sports therapy, relaxation and more — 100% natural, in Rio and Niterói.",
     "jornadasTitle": "Sensory Journeys · Sensória Spa",
-    "jornadasDescription": "Sensory rituals to gift, celebrate and share as a couple. Complete 100% natural journeys in Rio de Janeiro and Niterói."
+    "jornadasDescription": "Sensory rituals to gift, celebrate and share as a couple. Complete 100% natural journeys in Rio de Janeiro and Niterói.",
+    "clubesTitle": "Sensória Clubs · Sensória Spa",
+    "clubesDescription": "Sensória Spa membership plans: sessions, cumulative vouchers, complimentary sessions and discounts. Gold, Safira, Platinum and Diamond clubs."
   }
 }

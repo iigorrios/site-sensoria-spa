@@ -7,6 +7,7 @@ import LeadForm from '@/components/LeadForm';
 import LeadDialog from '@/components/LeadDialog';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeafAccent from '@/components/ui/LeafAccent';
+import GroundingText from '@/components/GroundingRitualTerm';
 import type { Experience } from '@/data/experiences';
 
 interface LandingPageProps {
@@ -20,6 +21,8 @@ interface LandingPageProps {
   experiences: Experience[];
   /** Imagem de fundo do hero. */
   heroImage: string;
+  /** Seção extra opcional, renderizada após as ofertas (ex.: Hotel Venit). */
+  extraSection?: React.ReactNode;
 }
 
 export default async function LandingPage({
@@ -28,6 +31,7 @@ export default async function LandingPage({
   source,
   experiences,
   heroImage,
+  extraSection,
 }: LandingPageProps) {
   const t = await getTranslations(`lp.${ns}`);
   const te = await getTranslations('experiences');
@@ -128,6 +132,9 @@ export default async function LandingPage({
         </div>
       </section>
 
+      {/* Seção extra (ex.: Jornadas exclusivas do Hotel Venit) */}
+      {extraSection}
+
       {/* Toda experiência inclui */}
       <section className="bg-sensoria-green py-24 text-sensoria-white md:py-32">
         <div className="container-editorial">
@@ -137,7 +144,9 @@ export default async function LandingPage({
               <Reveal key={item} index={i}>
                 <div className="flex items-start gap-3 border-t border-sensoria-white/15 pt-5">
                   <Check className="mt-0.5 h-4 w-4 flex-none text-sensoria-cream" />
-                  <span className="text-sm leading-relaxed text-sensoria-white/85">{item}</span>
+                  <span className="text-sm leading-relaxed text-sensoria-white/85">
+                    <GroundingText tone="light">{item}</GroundingText>
+                  </span>
                 </div>
               </Reveal>
             ))}

@@ -6,7 +6,7 @@ import { Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
-const ITEM_COUNT = 7;
+const ITEM_COUNT = 8;
 
 export default function FaqAccordion() {
   const t = useTranslations('faq');

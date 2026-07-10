@@ -24,6 +24,8 @@ export interface Experience {
   includes?: LocalizedList;
   benefits?: LocalizedList;
   prices: PriceTier[];
+  /** Selo de exclusividade (ex.: "Exclusivo Hotel Venit"). */
+  exclusive?: LocalizedText;
 }
 
 export interface Addon {
@@ -276,9 +278,16 @@ const PRICES_STD: PriceTier[] = [
   { duration: '50 min', individual: 210 },
   { duration: '90 min', individual: 315 },
 ];
+/** Massagens relaxantes/terapêuticas (Brisa, Flow, Trama, Sopro Restaurador). */
+const PRICES_RELAX: PriceTier[] = [
+  { duration: '30 min', individual: 140 },
+  { duration: '50 min', individual: 238 },
+  { duration: '90 min', individual: 420 },
+];
+/** Detox/premium (Lumina, Pureza, Sal e Ervas). */
 const PRICES_PREMIUM: PriceTier[] = [
-  { duration: '50 min', individual: 274 },
-  { duration: '90 min', individual: 410 },
+  { duration: '50 min', individual: 298 },
+  { duration: '90 min', individual: 480 },
 ];
 
 export const terapias: Experience[] = [
@@ -298,7 +307,7 @@ export const terapias: Experience[] = [
       en: ['Reduces fatigue', 'Relaxes the body', 'Reduces anxiety', 'Calms', 'Improves sleep quality'],
       es: ['Reduce el cansancio', 'Relaja el cuerpo', 'Reduce la ansiedad', 'Calma', 'Mejora la calidad del sueño'],
     },
-    prices: PRICES_STD,
+    prices: PRICES_RELAX,
   },
   {
     slug: 'flow',
@@ -316,7 +325,7 @@ export const terapias: Experience[] = [
       en: ['Reduces swelling and fluid retention', 'Improves circulation', 'Boosts the immune system', 'Relieves muscle and joint pain', 'Improves intestinal function'],
       es: ['Reduce hinchazón y retención de líquidos', 'Mejora la circulación', 'Estimula el sistema inmunológico', 'Alivia dolores musculares y articulares', 'Mejora la función intestinal'],
     },
-    prices: PRICES_STD,
+    prices: PRICES_RELAX,
   },
   {
     slug: 'toque-vulcanico',
@@ -335,8 +344,8 @@ export const terapias: Experience[] = [
       es: ['Reduce estrés y ansiedad', 'Alivia la tensión y la rigidez muscular', 'Mejora la circulación', 'Relaja la musculatura', 'Alivia dolores musculares y articulares'],
     },
     prices: [
-      { duration: '50 min', individual: 210 },
-      { duration: '90 min', individual: 315 },
+      { duration: '50 min', individual: 238 },
+      { duration: '90 min', individual: 420 },
     ],
   },
   {
@@ -373,7 +382,7 @@ export const terapias: Experience[] = [
       en: ['Relief from chronic and acute muscle pain', 'Reduction of knots and trigger points', 'Improved flexibility and mobility', 'Stimulates blood and lymphatic circulation', 'Restores body balance'],
       es: ['Alivio de dolores musculares crónicos y agudos', 'Reducción de nódulos y puntos gatillo', 'Mejora de la flexibilidad y movilidad', 'Estímulo de la circulación sanguínea y linfática', 'Restauración del equilibrio corporal'],
     },
-    prices: PRICES_STD,
+    prices: PRICES_RELAX,
   },
   {
     slug: 'sopro-restaurador',
@@ -391,7 +400,7 @@ export const terapias: Experience[] = [
       en: ['Effective for athletes with pain or injuries', 'Reduces inflammation and repairs muscle fibers', 'Improves blood circulation', 'Increases flexibility and range of motion', 'Helps prevent injuries'],
       es: ['Eficaz para atletas con dolores o lesiones', 'Reduce inflamaciones y recupera fibras musculares', 'Mejora la circulación sanguínea', 'Aumenta la flexibilidad y amplitud de movimiento', 'Ayuda en la prevención de lesiones'],
     },
-    prices: PRICES_STD,
+    prices: PRICES_RELAX,
   },
   {
     slug: 'pureza',
@@ -612,10 +621,144 @@ export const adicionais: Addon[] = [
 ];
 
 /* ------------------------------------------------------------------ */
+/* JORNADAS EXCLUSIVAS — HOTEL VENIT (BARRA)                           */
+/* ------------------------------------------------------------------ */
+
+const VENIT_BADGE: LocalizedText = {
+  pt: 'Exclusivo Hotel Venit',
+  en: 'Hotel Venit exclusive',
+  es: 'Exclusivo Hotel Venit',
+};
+
+export const venitJornadas: Experience[] = [
+  {
+    slug: 'five-senses',
+    category: 'jornada',
+    image: '/images/experiences/venit/five-senses.jpg',
+    exclusive: VENIT_BADGE,
+    name: { pt: 'Five Senses', en: 'Five Senses', es: 'Five Senses' },
+    subtitle: {
+      pt: 'Os cinco sentidos em harmonia.',
+      en: 'The five senses in harmony.',
+      es: 'Los cinco sentidos en armonía.',
+    },
+    description: {
+      pt: 'Uma introdução completa ao universo Sensória dentro do Hotel Venit. Do welcome drink ao Grounding Ritual com ervas e à massagem relaxante, a jornada culmina em uma experiência gastronômica assinada pelo Matera Restaurant.',
+      en: 'A complete introduction to the Sensória universe inside Hotel Venit. From the welcome drink to the Grounding Ritual with herbs and the relaxing massage, the journey culminates in a gastronomic experience by Matera Restaurant.',
+      es: 'Una introducción completa al universo Sensória dentro del Hotel Venit. Del welcome drink al Grounding Ritual con hierbas y al masaje relajante, la jornada culmina en una experiencia gastronómica firmada por Matera Restaurant.',
+    },
+    includes: {
+      pt: ['Roupão premium', 'Welcome drink', 'Menu de chás e café especial', 'Grounding Ritual com ervas', 'Massagem relaxante', 'Experiência gastronômica Sensória by Matera Restaurant'],
+      en: ['Premium robe', 'Welcome drink', 'Menu of teas and specialty coffee', 'Grounding Ritual with herbs', 'Relaxing massage', 'Sensória gastronomic experience by Matera Restaurant'],
+      es: ['Bata premium', 'Welcome drink', 'Menú de tés y café especial', 'Grounding Ritual con hierbas', 'Masaje relajante', 'Experiencia gastronómica Sensória by Matera Restaurant'],
+    },
+    prices: [{ duration: '90 min', individual: 380 }],
+  },
+  {
+    slug: 'sensorial-journey',
+    category: 'jornada',
+    image: '/images/experiences/venit/sensorial-journey.jpg',
+    exclusive: VENIT_BADGE,
+    name: { pt: 'Sensorial Journey', en: 'Sensorial Journey', es: 'Sensorial Journey' },
+    subtitle: {
+      pt: 'Uma imersão sensorial a dois ou só sua.',
+      en: 'A sensory immersion, together or just yours.',
+      es: 'Una inmersión sensorial en pareja o solo tuya.',
+    },
+    description: {
+      pt: 'Uma jornada que aprofunda o cuidado com o corpo e o rosto. Grounding Ritual com sais e ervas, massagem craniofacial com pantalas faciais e massagem relaxante, coroada pela experiência gastronômica by Matera — perfeita para viver a dois.',
+      en: 'A journey that deepens care for body and face. Grounding Ritual with salts and herbs, craniofacial massage with facial tools and a relaxing massage, crowned by the Matera gastronomic experience — perfect to share as a couple.',
+      es: 'Una jornada que profundiza el cuidado del cuerpo y del rostro. Grounding Ritual con sales y hierbas, masaje craneofacial con pantalas faciales y masaje relajante, coronada por la experiencia gastronómica by Matera — perfecta para vivir en pareja.',
+    },
+    includes: {
+      pt: ['Welcome drink', 'Menu de chás e cafés especiais', 'Grounding Ritual com sais e ervas', 'Massagem craniofacial + pantalas faciais', 'Massagem relaxante', 'Experiência gastronômica Sensória by Matera Restaurant'],
+      en: ['Welcome drink', 'Menu of teas and specialty coffees', 'Grounding Ritual with salts and herbs', 'Craniofacial massage + facial tools', 'Relaxing massage', 'Sensória gastronomic experience by Matera Restaurant'],
+      es: ['Welcome drink', 'Menú de tés y cafés especiales', 'Grounding Ritual con sales y hierbas', 'Masaje craneofacial + pantalas faciales', 'Masaje relajante', 'Experiencia gastronómica Sensória by Matera Restaurant'],
+    },
+    prices: [{ duration: '120 min', individual: 490, double: 880 }],
+  },
+  {
+    slug: 'renewal-ritual',
+    category: 'jornada',
+    image: '/images/experiences/venit/renewal-ritual.jpg',
+    exclusive: VENIT_BADGE,
+    name: { pt: 'Renewal Ritual', en: 'Renewal Ritual', es: 'Renewal Ritual' },
+    subtitle: {
+      pt: 'Renovação profunda de corpo e pele.',
+      en: 'Deep renewal of body and skin.',
+      es: 'Renovación profunda de cuerpo y piel.',
+    },
+    description: {
+      pt: 'Um ritual de renovação com drenagem e detox. Grounding Ritual com sais e ervas, massagem craniofacial com drenagem facial, massagem relaxante e drenagem corporal e sauna olfativa Detox — finalizado com gastronomia by Matera e espumante premiado na versão em dupla.',
+      en: 'A renewal ritual with drainage and detox. Grounding Ritual with salts and herbs, craniofacial massage with facial drainage, relaxing massage and body drainage, and a detox scent sauna — finished with Matera cuisine and award-winning sparkling wine in the couple version.',
+      es: 'Un ritual de renovación con drenaje y detox. Grounding Ritual con sales y hierbas, masaje craneofacial con drenaje facial, masaje relajante y drenaje corporal y sauna olfativa Detox — finalizado con gastronomía by Matera y espumante premiado en la versión en pareja.',
+    },
+    includes: {
+      pt: ['Grounding Ritual com sais e ervas', 'Massagem craniofacial + drenagem facial', 'Massagem relaxante e drenagem corporal', 'Sauna olfativa Detox', 'Experiência gastronômica by Matera', 'Espumante premiado (versão Dupla)'],
+      en: ['Grounding Ritual with salts and herbs', 'Craniofacial massage + facial drainage', 'Relaxing massage and body drainage', 'Detox scent sauna', 'Matera gastronomic experience', 'Award-winning sparkling wine (Couple version)'],
+      es: ['Grounding Ritual con sales y hierbas', 'Masaje craneofacial + drenaje facial', 'Masaje relajante y drenaje corporal', 'Sauna olfativa Detox', 'Experiencia gastronómica by Matera', 'Espumante premiado (versión Pareja)'],
+    },
+    prices: [{ duration: '150 min', individual: 590, double: 980 }],
+  },
+  {
+    slug: 'body-soul-cleanse',
+    category: 'jornada',
+    image: '/images/experiences/venit/body-soul-cleanse.jpg',
+    exclusive: VENIT_BADGE,
+    name: { pt: 'Body & Soul Cleanse', en: 'Body & Soul Cleanse', es: 'Body & Soul Cleanse' },
+    subtitle: {
+      pt: 'Purificação completa de corpo e alma.',
+      en: 'A complete cleanse of body and soul.',
+      es: 'Purificación completa de cuerpo y alma.',
+    },
+    description: {
+      pt: 'A jornada detox mais completa do Hotel Venit. Massagem craniofacial com pantalas e esfoliação facial, reflexologia e esfoliação de pés e mãos, esfoliação Detox corporal com mix de argilas, sauna olfativa Detox com ducha e massagem Detox relaxante — com gastronomia by Matera e espumante premiado na versão em dupla.',
+      en: "Hotel Venit's most complete detox journey. Craniofacial massage with tools and facial exfoliation, reflexology and hand and foot exfoliation, body detox exfoliation with a clay mix, detox scent sauna with shower and a relaxing detox massage — with Matera cuisine and award-winning sparkling wine in the couple version.",
+      es: 'La jornada detox más completa del Hotel Venit. Masaje craneofacial con pantalas y exfoliación facial, reflexología y exfoliación de pies y manos, exfoliación Detox corporal con mix de arcillas, sauna olfativa Detox con ducha y masaje Detox relajante — con gastronomía by Matera y espumante premiado en la versión en pareja.',
+    },
+    includes: {
+      pt: ['Massagem craniofacial + pantalas faciais + esfoliação facial', 'Reflexologia + esfoliação de pés e mãos', 'Esfoliação Detox corporal com mix de argilas', 'Sauna olfativa Detox + ducha', 'Massagem Detox relaxante', 'Experiência gastronômica by Matera', 'Espumante premiado (versão Dupla)'],
+      en: ['Craniofacial massage + facial tools + facial exfoliation', 'Reflexology + hand and foot exfoliation', 'Body detox exfoliation with a clay mix', 'Detox scent sauna + shower', 'Relaxing detox massage', 'Matera gastronomic experience', 'Award-winning sparkling wine (Couple version)'],
+      es: ['Masaje craneofacial + pantalas faciales + exfoliación facial', 'Reflexología + exfoliación de pies y manos', 'Exfoliación Detox corporal con mix de arcillas', 'Sauna olfativa Detox + ducha', 'Masaje Detox relajante', 'Experiencia gastronómica by Matera', 'Espumante premiado (versión Pareja)'],
+    },
+    prices: [{ duration: '180 min', individual: 690, double: 1180 }],
+  },
+  {
+    slug: 'memorial-moments',
+    category: 'jornada',
+    image: '/images/experiences/venit/memorial-moments.jpg',
+    exclusive: VENIT_BADGE,
+    name: { pt: 'Memorial Moments', en: 'Memorial Moments', es: 'Memorial Moments' },
+    subtitle: {
+      pt: 'Uma diária inesquecível no Hotel Venit Mio.',
+      en: 'An unforgettable overnight stay at Hotel Venit Mio.',
+      es: 'Una estadía inolvidable en el Hotel Venit Mio.',
+    },
+    description: {
+      pt: 'A experiência mais completa: uma diária no Hotel Venit Mio (check-in 14h / check-out 12h) com breakfast servido na suíte, massagem craniofacial, sauna olfativa relaxante, massagem relaxante, gastronomia by Matera e espumante premiado. Um refúgio de tempo só seu.',
+      en: 'The most complete experience: an overnight stay at Hotel Venit Mio (check-in 2pm / check-out 12pm) with breakfast served in the suite, craniofacial massage, relaxing scent sauna, relaxing massage, Matera cuisine and award-winning sparkling wine. A refuge of time just for you.',
+      es: 'La experiencia más completa: una estadía en el Hotel Venit Mio (check-in 14h / check-out 12h) con breakfast servido en la suite, masaje craneofacial, sauna olfativa relajante, masaje relajante, gastronomía by Matera y espumante premiado. Un refugio de tiempo solo tuyo.',
+    },
+    includes: {
+      pt: ['Diária no Hotel Venit Mio (check-in 14h / check-out 12h)', 'Breakfast servido na suíte', 'Massagem craniofacial', 'Sauna olfativa relaxante', 'Massagem relaxante', 'Gastronomia by Matera', 'Espumante premiado'],
+      en: ['Overnight at Hotel Venit Mio (check-in 2pm / check-out 12pm)', 'Breakfast served in the suite', 'Craniofacial massage', 'Relaxing scent sauna', 'Relaxing massage', 'Matera cuisine', 'Award-winning sparkling wine'],
+      es: ['Estadía en el Hotel Venit Mio (check-in 14h / check-out 12h)', 'Breakfast servido en la suite', 'Masaje craneofacial', 'Sauna olfativa relajante', 'Masaje relajante', 'Gastronomía by Matera', 'Espumante premiado'],
+    },
+    prices: [
+      {
+        duration: 'Diária',
+        value: 1580,
+        label: { pt: 'Individual ou Dupla*', en: 'Single or Couple*', es: 'Individual o Pareja*' },
+      },
+    ],
+  },
+];
+
+/* ------------------------------------------------------------------ */
 /* Helpers                                                             */
 /* ------------------------------------------------------------------ */
 
-export const allExperiences: Experience[] = [...jornadas, ...terapias];
+export const allExperiences: Experience[] = [...jornadas, ...venitJornadas, ...terapias];
 
 export function getExperienceBySlug(slug: string): Experience | undefined {
   return allExperiences.find((e) => e.slug === slug);
