@@ -7,6 +7,7 @@ import Reveal from '@/components/motion/Reveal';
 import Parallax from '@/components/motion/Parallax';
 import LeadForm from '@/components/LeadForm';
 import LeadDialog from '@/components/LeadDialog';
+import GiftCard from '@/components/GiftCard';
 import MagneticButton from '@/components/ui/MagneticButton';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeafIcon from '@/components/ui/LeafIcon';
@@ -195,6 +196,9 @@ export default async function HomePage({
           </div>
         </div>
       </section>
+
+      {/* Cartão Presente */}
+      <GiftCard />
 
       {/* Unidades */}
       <section className="bg-sensoria-white py-24 md:py-36">

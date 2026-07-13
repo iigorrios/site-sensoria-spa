@@ -94,6 +94,11 @@ Proporção **3:2** (paisagem), ~1200×800px. `public/images/units/`
 `public/images/about/`
 `sobre-1.jpg` (4:5) · `sobre-2.jpg` (4:5) · `produtos.jpg` (4:5)
 
+## 🎁 Cartão Presente (seção na Home)
+`public/images/gift/`
+`cartao-presente.jpg` — foto do cartão/envelope lacrado (ex.: o envelope com selo
+de cera). Proporção **4:3** (paisagem), ~1200×900px. Pode ser jpg **ou** png.
+
 ## ✨ Galeria (uso livre em home/sobre)
 `public/images/gallery/`
 `ambiente.jpg` (4:3) e demais fotos que quiser destacar.

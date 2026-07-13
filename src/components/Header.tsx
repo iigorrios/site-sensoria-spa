@@ -42,7 +42,8 @@ export default function Header() {
   const solid = scrolled || !isHome;
 
   return (
-    <header
+    <>
+      <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-smooth',
         solid
@@ -100,12 +101,13 @@ export default function Header() {
           </button>
         </div>
       </div>
+      </header>
 
-      {/* Menu mobile */}
+      {/* Menu mobile — fora do <header> para o backdrop-blur não conter o `fixed`. */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-50 flex flex-col bg-sensoria-green px-6 py-6 lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col bg-sensoria-green px-6 py-6 lg:hidden"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -141,6 +143,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
