@@ -25,7 +25,7 @@ export default function JornadasLandingPage({
       category="jornada"
       source="lp-jornadas"
       experiences={jornadas}
-      heroImage="/images/lp/jornadas.jpg"
+      heroImage="/images/lp/jornadas.png"
       extraSection={<VenitSection />}
     />
   );

@@ -131,7 +131,7 @@ export const jornadas: Experience[] = [
   {
     slug: 'parque-lage',
     category: 'jornada',
-    image: '/images/experiences/jornadas/parque-lage.jpg',
+    image: '/images/experiences/jornadas/parque-lage.png',
     name: { pt: 'Parque Lage', en: 'Parque Lage', es: 'Parque Lage' },
     subtitle: {
       pt: 'Elegância natural, pausa consciente e conexão com o essencial.',
@@ -441,7 +441,7 @@ export const terapias: Experience[] = [
   {
     slug: 'celeridade',
     category: 'terapia',
-    image: '/images/experiences/terapias/celeridade.jpg',
+    image: '/images/experiences/terapias/celeridade.png',
     name: { pt: 'Celeridade', en: 'Celeridade', es: 'Celeridade' },
     subtitle: { pt: 'Massagem turbo com ventosas.', en: 'Turbo massage with cupping.', es: 'Masaje turbo con ventosas.' },
     description: {

@@ -36,7 +36,7 @@ export default async function HomePage({
     },
     {
       href: '/jornadas' as const,
-      image: '/images/lp/jornadas.jpg',
+      image: '/images/lp/jornadas.png',
       title: t('journeysTitle'),
       text: t('journeysText'),
       cta: t('journeysCta'),
