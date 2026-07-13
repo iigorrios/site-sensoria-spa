@@ -7,6 +7,7 @@ import LeadForm from '@/components/LeadForm';
 import LeadDialog from '@/components/LeadDialog';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeafIcon from '@/components/ui/LeafIcon';
+import SkylineBg from '@/components/ui/SkylineBg';
 import GroundingText from '@/components/GroundingRitualTerm';
 import type { Experience } from '@/data/experiences';
 
@@ -165,8 +166,9 @@ export default async function LandingPage({
       </section>
 
       {/* CTA WhatsApp */}
-      <section className="bg-sensoria-cream py-24 md:py-32">
-        <div className="container-editorial flex flex-col items-center text-center">
+      <section className="relative overflow-hidden bg-sensoria-cream py-24 md:py-32">
+        <SkylineBg />
+        <div className="container-editorial relative z-10 flex flex-col items-center text-center">
           <LeafIcon tone="green" className="mb-6 w-28 text-sensoria-green" />
           <Reveal>
             <h2 className="max-w-2xl text-balance font-display text-4xl leading-[1.05] tracking-display text-sensoria-graphite md:text-6xl">

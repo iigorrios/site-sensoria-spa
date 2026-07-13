@@ -2,7 +2,6 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import LeafIcon from '@/components/ui/LeafIcon';
 import SocialLinks from '@/components/ui/SocialLinks';
-import RioSkyline from '@/components/ui/RioSkyline';
 import { siteConfig } from '@/config/site';
 import { units } from '@/data/units';
 
@@ -20,9 +19,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <>
-      <RioSkyline />
-      <footer className="bg-sensoria-green text-sensoria-white">
+    <footer className="bg-sensoria-green text-sensoria-white">
       <div className="container-editorial py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
@@ -84,7 +81,6 @@ export default function Footer() {
           <span>{siteConfig.instagramHandle} · Rio de Janeiro · Niterói</span>
         </div>
       </div>
-      </footer>
-    </>
+    </footer>
   );
 }
