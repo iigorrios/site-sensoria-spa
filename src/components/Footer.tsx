@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import LeafAccent from '@/components/ui/LeafAccent';
+import LeafIcon from '@/components/ui/LeafIcon';
 import SocialLinks from '@/components/ui/SocialLinks';
 import RioSkyline from '@/components/ui/RioSkyline';
 import { siteConfig } from '@/config/site';
@@ -31,7 +31,7 @@ export default function Footer() {
             <p className="mt-2 font-sans text-sm italic text-sensoria-fog">
               {t('footer.tagline')}
             </p>
-            <LeafAccent className="mt-6 w-28 text-sensoria-cream/70" />
+            <LeafIcon tone="light" className="mt-6 w-28 text-sensoria-cream/70" />
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-sensoria-white/70">
               {t('footer.madeWith')}
             </p>

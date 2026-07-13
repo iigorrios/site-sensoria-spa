@@ -4,7 +4,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/motion/Reveal';
 import Parallax from '@/components/motion/Parallax';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
-import LeafAccent from '@/components/ui/LeafAccent';
+import LeafIcon from '@/components/ui/LeafIcon';
 
 export async function generateMetadata({
   params: { locale },
@@ -48,7 +48,7 @@ export default async function AboutPage({
       {/* Compromisso */}
       <section className="bg-sensoria-green py-24 text-sensoria-white md:py-32">
         <div className="container-editorial max-w-4xl">
-          <LeafAccent className="mb-6 w-28 text-sensoria-cream/70" />
+          <LeafIcon tone="light" className="mb-6 w-28 text-sensoria-cream/70" />
           <SectionHeading title={t('commitmentTitle')} tone="light" />
           <Reveal index={2}>
             <p className="mt-6 text-lg leading-relaxed text-sensoria-white/85">{t('commitmentText')}</p>
@@ -101,7 +101,7 @@ export default async function AboutPage({
             {productKeys.map((k, i) => (
               <Reveal key={k} index={i}>
                 <div className="flex h-full flex-col gap-2 rounded-2xl bg-sensoria-fog/40 p-7">
-                  <LeafAccent className="w-16 text-sensoria-green" />
+                  <LeafIcon tone="green" className="w-16 text-sensoria-green" />
                   <h3 className="mt-2 font-display text-xl tracking-display text-sensoria-graphite">
                     {t(`productLines.${k}.title`)}
                   </h3>

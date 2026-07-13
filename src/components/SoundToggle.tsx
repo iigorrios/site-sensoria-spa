@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Volume2, VolumeX } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import LeafAccent from '@/components/ui/LeafAccent';
+import LeafIcon from '@/components/ui/LeafIcon';
 
 const STORAGE_KEY = 'sensoria-sound';
 const VOLUME = 0.35;
@@ -87,7 +87,7 @@ export default function SoundToggle() {
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <LeafAccent className="mx-auto mb-5 w-20 text-sensoria-green" />
+              <LeafIcon tone="green" className="mx-auto mb-5 w-20 text-sensoria-green" />
               <h2 className="font-display text-2xl leading-tight tracking-display text-sensoria-graphite">
                 {t('question')}
               </h2>

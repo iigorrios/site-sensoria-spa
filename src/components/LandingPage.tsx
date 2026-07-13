@@ -6,7 +6,7 @@ import ExperienceCard from '@/components/ExperienceCard';
 import LeadForm from '@/components/LeadForm';
 import LeadDialog from '@/components/LeadDialog';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
-import LeafAccent from '@/components/ui/LeafAccent';
+import LeafIcon from '@/components/ui/LeafIcon';
 import GroundingText from '@/components/GroundingRitualTerm';
 import type { Experience } from '@/data/experiences';
 
@@ -167,7 +167,7 @@ export default async function LandingPage({
       {/* CTA WhatsApp */}
       <section className="bg-sensoria-cream py-24 md:py-32">
         <div className="container-editorial flex flex-col items-center text-center">
-          <LeafAccent className="mb-6 w-28 text-sensoria-green" />
+          <LeafIcon tone="green" className="mb-6 w-28 text-sensoria-green" />
           <Reveal>
             <h2 className="max-w-2xl text-balance font-display text-4xl leading-[1.05] tracking-display text-sensoria-graphite md:text-6xl">
               {t('ctaTitle')}

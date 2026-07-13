@@ -100,9 +100,23 @@ Proporção **3:2** (paisagem), ~1200×800px. `public/images/units/`
 
 ## 🎋 Detalhe decorativo — skyline do Rio (Pão de Açúcar + Cristo)
 `public/images/decor/`
-`icone-rj.svg` — o desenho em linha (verde claro) que aparece **encostado na borda
-inferior**, logo acima do rodapé, em todas as páginas. SVG de preferência (linha fina,
-fundo transparente). Enquanto não existir, aparece só uma faixa branca discreta.
+`icone-rj.svg` — o desenho em linha (verde claro). Aparece **em toda a largura**,
+encostado na borda inferior, logo acima do rodapé, em todas as páginas.
+> O recorte justo (`icone-rj-crop.svg`) é gerado automaticamente a partir do
+> `icone-rj.svg`. Para um traço mais nítido em telas grandes, o ideal é um SVG/PNG
+> **panorâmico** (ex.: ~2400×840px), fundo transparente, com o skyline preenchendo
+> a largura.
+
+## 🌿 Ícone de ramo (folha) — 2 variantes de cor
+`public/images/decor/` — **PNG com fundo transparente**, ~**400px** no maior lado.
+| Arquivo | Cor | Onde é usado |
+|---|---|---|
+| `ramo-verde.png` | Verde `#5E7360` | Fundos claros (CTAs em creme, cards, modal de som) |
+| `ramo-creme.png` | Creme `#FFF6C4` | Fundos escuros (rodapé, seção verde do "Quem Somos") |
+
+> Substitui o "raminho" vetorial atual. Enquanto os PNGs não existirem, o site faz
+> **fallback automático** para o desenho vetorial (nada quebra). A proporção do ramo
+> é livre — o tamanho na tela é controlado pela largura (o site usa de 64 a 112px).
 
 ---
 
