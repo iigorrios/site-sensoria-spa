@@ -125,8 +125,8 @@ export function getMetaCookies(): { fbp?: string; fbc?: string } {
   const fbp = readCookie('_fbp');
   let fbc = readCookie('_fbc');
   if (!fbc && typeof window !== 'undefined') {
-    const fbclid = new URLSearchParams(window.location.search).get('fbclid');
-    if (fbclid) fbc = `fb.1.${Date.now()}.${fbclid}`;
+    const fbclid = new URLSearchParams(window.location.search).get('fbclid')?.trim();
+    if (fbclid && !isPlaceholder(fbclid)) fbc = `fb.1.${Date.now()}.${fbclid}`;
   }
   return { fbp, fbc };
 }
