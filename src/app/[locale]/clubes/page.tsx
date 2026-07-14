@@ -7,6 +7,7 @@ import LeadDialog from '@/components/LeadDialog';
 import LeafIcon from '@/components/ui/LeafIcon';
 import SkylineBg from '@/components/ui/SkylineBg';
 import { cn, formatBRL } from '@/lib/utils';
+import { alternatesFor } from '@/lib/seo';
 import { clubs, giftback } from '@/data/clubes';
 import type { Locale } from '@/data/experiences';
 
@@ -16,7 +17,11 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('clubesTitle'), description: t('clubesDescription') };
+  return {
+    title: t('clubesTitle'),
+    description: t('clubesDescription'),
+    alternates: alternatesFor(locale, '/clubes'),
+  };
 }
 
 export default async function ClubesPage({

@@ -5,6 +5,9 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { routing } from '@/i18n/routing';
 import { inter, cormorant } from '@/lib/fonts';
 import { siteConfig } from '@/config/site';
+import { alternatesFor } from '@/lib/seo';
+import { organizationSchema } from '@/lib/jsonld';
+import JsonLd from '@/components/JsonLd';
 import SmoothScroll from '@/components/motion/SmoothScroll';
 import Preloader from '@/components/motion/Preloader';
 import SoundToggle from '@/components/SoundToggle';
@@ -26,6 +29,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'meta' });
   return {
     metadataBase: new URL(siteConfig.url),
+    alternates: alternatesFor(locale, ''),
     title: {
       default: t('homeTitle'),
       template: '%s',
@@ -61,6 +65,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${cormorant.variable}`}>
       <body className="antialiased">
+        <JsonLd data={organizationSchema()} />
         <NextIntlClientProvider messages={messages}>
           <MetaPixel />
           <AttributionCapture />

@@ -5,6 +5,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import ContactForm from '@/components/ContactForm';
 import LeadDialog from '@/components/LeadDialog';
 import { siteConfig } from '@/config/site';
+import { alternatesFor } from '@/lib/seo';
 import { units } from '@/data/units';
 import type { Locale } from '@/data/experiences';
 
@@ -14,7 +15,11 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('contactTitle'), description: t('contactDescription') };
+  return {
+    title: t('contactTitle'),
+    description: t('contactDescription'),
+    alternates: alternatesFor(locale, '/contato'),
+  };
 }
 
 export default async function ContactPage({

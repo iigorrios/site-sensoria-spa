@@ -5,6 +5,7 @@ import Reveal from '@/components/motion/Reveal';
 import Parallax from '@/components/motion/Parallax';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeafIcon from '@/components/ui/LeafIcon';
+import { alternatesFor } from '@/lib/seo';
 
 export async function generateMetadata({
   params: { locale },
@@ -12,7 +13,11 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('aboutTitle'), description: t('aboutDescription') };
+  return {
+    title: t('aboutTitle'),
+    description: t('aboutDescription'),
+    alternates: alternatesFor(locale, '/sobre'),
+  };
 }
 
 const valueKeys = ['faith', 'ethics', 'work', 'responsibility', 'team'] as const;

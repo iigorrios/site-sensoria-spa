@@ -3,6 +3,11 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SectionHeading from '@/components/ui/SectionHeading';
 import FaqAccordion from '@/components/FaqAccordion';
 import LeadDialog from '@/components/LeadDialog';
+import JsonLd from '@/components/JsonLd';
+import { faqSchema } from '@/lib/jsonld';
+import { alternatesFor } from '@/lib/seo';
+
+const FAQ_COUNT = 8;
 
 export async function generateMetadata({
   params: { locale },
@@ -10,7 +15,11 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('faqTitle'), description: t('faqDescription') };
+  return {
+    title: t('faqTitle'),
+    description: t('faqDescription'),
+    alternates: alternatesFor(locale, '/faq'),
+  };
 }
 
 export default async function FaqPage({
@@ -21,9 +30,14 @@ export default async function FaqPage({
   setRequestLocale(locale);
   const t = await getTranslations('faq');
   const tc = await getTranslations('common');
+  const qa = Array.from({ length: FAQ_COUNT }, (_, i) => ({
+    q: t(`items.${i}.q`),
+    a: t(`items.${i}.a`),
+  }));
 
   return (
     <div className="bg-sensoria-white pb-24 pt-32 md:pt-40">
+      <JsonLd data={faqSchema(qa)} />
       <div className="container-editorial max-w-4xl">
         <SectionHeading eyebrow={t('eyebrow')} title={t('title')} />
         <div className="mt-14">

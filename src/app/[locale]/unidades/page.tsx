@@ -5,6 +5,9 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import Reveal from '@/components/motion/Reveal';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeadDialog from '@/components/LeadDialog';
+import JsonLd from '@/components/JsonLd';
+import { unitsSchema } from '@/lib/jsonld';
+import { alternatesFor } from '@/lib/seo';
 import { units } from '@/data/units';
 import type { Locale } from '@/data/experiences';
 
@@ -14,7 +17,11 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('unitsTitle'), description: t('unitsDescription') };
+  return {
+    title: t('unitsTitle'),
+    description: t('unitsDescription'),
+    alternates: alternatesFor(locale, '/unidades'),
+  };
 }
 
 export default async function UnitsPage({
@@ -29,6 +36,7 @@ export default async function UnitsPage({
 
   return (
     <div className="bg-sensoria-white pb-24 pt-32 md:pt-40">
+      <JsonLd data={unitsSchema()} />
       <div className="container-editorial">
         <SectionHeading eyebrow={t('eyebrow')} title={t('title')} description={t('description')} />
 

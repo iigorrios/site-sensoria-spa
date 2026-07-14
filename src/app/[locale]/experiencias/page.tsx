@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ExperiencesExplorer from '@/components/ExperiencesExplorer';
+import { alternatesFor } from '@/lib/seo';
 
 export async function generateMetadata({
   params: { locale },
@@ -9,7 +10,11 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta' });
-  return { title: t('experiencesTitle'), description: t('experiencesDescription') };
+  return {
+    title: t('experiencesTitle'),
+    description: t('experiencesDescription'),
+    alternates: alternatesFor(locale, '/experiencias'),
+  };
 }
 
 export default async function ExperiencesPage({

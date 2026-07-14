@@ -6,8 +6,11 @@ import { Link } from '@/i18n/routing';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeadDialog from '@/components/LeadDialog';
 import GroundingText from '@/components/GroundingRitualTerm';
+import JsonLd from '@/components/JsonLd';
 import Reveal from '@/components/motion/Reveal';
 import { formatBRL } from '@/lib/utils';
+import { alternatesFor, SITE_URL } from '@/lib/seo';
+import { serviceSchema, breadcrumbSchema } from '@/lib/jsonld';
 import { allExperiences, getExperienceBySlug, type Locale } from '@/data/experiences';
 import { routing } from '@/i18n/routing';
 
@@ -28,6 +31,7 @@ export async function generateMetadata({
   return {
     title: `${exp.name[l]} · Sensória Spa`,
     description: exp.subtitle[l],
+    alternates: alternatesFor(locale, `/experiencias/${slug}`),
   };
 }
 
@@ -43,11 +47,20 @@ export default async function ExperienceDetailPage({
   const l = locale as Locale;
   const t = await getTranslations('experiences');
   const tc = await getTranslations('common');
+  const tn = await getTranslations('nav');
   const list = exp.includes?.[l] ?? exp.benefits?.[l] ?? [];
   const listTitle = exp.includes ? tc('includes') : t('benefits');
 
+  const catPath = exp.category === 'jornada' ? 'jornadas' : 'terapias';
+  const breadcrumb = breadcrumbSchema([
+    { name: tn('home'), url: `${SITE_URL}/${l}` },
+    { name: exp.category === 'jornada' ? tn('jornadas') : tn('terapias'), url: `${SITE_URL}/${l}/${catPath}` },
+    { name: exp.name[l], url: `${SITE_URL}/${l}/experiencias/${exp.slug}` },
+  ]);
+
   return (
     <article className="bg-sensoria-white pb-24 pt-28 md:pt-32">
+      <JsonLd data={[serviceSchema(exp, l), breadcrumb]} />
       {/* Hero da experiência */}
       <div className="relative h-[52vh] min-h-[380px] w-full overflow-hidden md:h-[62vh]">
         <ImagePlaceholder src={exp.image} alt={exp.name[l]} fill priority sizes="100vw" className="h-full w-full" />
