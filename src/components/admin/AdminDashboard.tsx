@@ -12,6 +12,7 @@ import {
   CalendarClock,
   Phone,
   X,
+  Download,
 } from 'lucide-react';
 import { normalizePhoneBR } from '@/lib/phone';
 import type { LeadRow } from '@/types/lead';
@@ -79,6 +80,60 @@ function waHref(lead: LeadRow): string | null {
   const interesse = lead.experiencia ? ` sobre "${lead.experiencia}"` : '';
   const msg = `Olá${first ? ` ${first}` : ''}! Aqui é do Sensória Spa. Recebemos seu contato${interesse} e gostaríamos de ajudar a agendar sua experiência. 🌿`;
   return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+}
+
+/** Colunas exportadas no CSV (ordem e cabeçalho). */
+const CSV_COLUMNS: { key: keyof LeadRow; header: string }[] = [
+  { key: 'created_at', header: 'Data' },
+  { key: 'nome', header: 'Nome' },
+  { key: 'email', header: 'E-mail' },
+  { key: 'telefone', header: 'Telefone' },
+  { key: 'unidade', header: 'Unidade' },
+  { key: 'experiencia', header: 'Experiência' },
+  { key: 'categoria', header: 'Categoria' },
+  { key: 'mensagem', header: 'Mensagem' },
+  { key: 'origem', header: 'Origem' },
+  { key: 'utm_source', header: 'utm_source' },
+  { key: 'utm_medium', header: 'utm_medium' },
+  { key: 'utm_campaign', header: 'utm_campaign' },
+  { key: 'utm_content', header: 'utm_content' },
+  { key: 'utm_term', header: 'utm_term' },
+  { key: 'gclid', header: 'gclid' },
+  { key: 'fbclid', header: 'fbclid' },
+  { key: 'referrer', header: 'referrer' },
+  { key: 'landing_page', header: 'landing_page' },
+];
+
+/** Escapa um valor para CSV (aspas duplas + escape de aspas internas). */
+function csvCell(value: string): string {
+  return `"${value.replace(/"/g, '""')}"`;
+}
+
+/** Gera e baixa um CSV (delimitador ";" + BOM UTF-8, amigável ao Excel pt-BR). */
+function downloadCsv(rows: LeadRow[]): void {
+  const header = CSV_COLUMNS.map((c) => csvCell(c.header)).join(';');
+  const body = rows
+    .map((row) =>
+      CSV_COLUMNS.map((c) => {
+        const raw = row[c.key];
+        // Data em formato legível; demais campos como texto (ou vazio).
+        const val =
+          c.key === 'created_at' && raw ? formatDate(String(raw)) : raw == null ? '' : String(raw);
+        return csvCell(val);
+      }).join(';')
+    )
+    .join('\r\n');
+  const csv = '﻿' + header + '\r\n' + body;
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `leads-sensoria-${dayKey(new Date())}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
 }
 
 /** Junta os campos de atribuição não vazios em pares legíveis. */
@@ -225,13 +280,22 @@ export default function AdminDashboard({ leads, loadError }: Props) {
               {hasFilters && ` · ${filtered.length} no filtro`}
             </p>
           </div>
-          <button
-            onClick={logout}
-            disabled={loggingOut}
-            className="inline-flex h-11 items-center justify-center gap-2 self-start rounded-full border border-sensoria-fog bg-white px-5 font-sans text-sm font-medium text-sensoria-graphite transition-colors hover:bg-sensoria-fog disabled:opacity-60"
-          >
-            <LogOut className="h-4 w-4" /> Sair
-          </button>
+          <div className="flex items-center gap-2 self-start">
+            <button
+              onClick={() => downloadCsv(filtered)}
+              disabled={filtered.length === 0}
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-sensoria-green px-5 font-sans text-sm font-medium text-white transition-colors hover:bg-[#516353] disabled:opacity-50"
+            >
+              <Download className="h-4 w-4" /> Exportar CSV
+            </button>
+            <button
+              onClick={logout}
+              disabled={loggingOut}
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-sensoria-fog bg-white px-5 font-sans text-sm font-medium text-sensoria-graphite transition-colors hover:bg-sensoria-fog disabled:opacity-60"
+            >
+              <LogOut className="h-4 w-4" /> Sair
+            </button>
+          </div>
         </div>
 
         {loadError && (
