@@ -11,7 +11,7 @@ create table if not exists public.contact_submissions (
   telefone    text,
   unidade     text,          -- unidade de interesse
   experiencia text,          -- experiência/pacote de interesse (opcional)
-  mensagem    text not null,
+  mensagem    text,          -- opcional (o formulário enxuto das LPs não envia)
   origem      text default 'site'
 );
 
@@ -32,6 +32,10 @@ create index if not exists contact_submissions_created_at_idx
 --  Colunas de campanha / atribuição (UTMs + click IDs).
 --  Rode este bloco também (seguro rodar novamente — usa IF NOT EXISTS).
 -- ============================================================
+-- 'mensagem' é opcional (o formulário enxuto das LPs não coleta mensagem).
+-- Rode isto se a tabela já existia com NOT NULL:
+alter table public.contact_submissions alter column mensagem drop not null;
+
 alter table public.contact_submissions add column if not exists categoria     text;
 alter table public.contact_submissions add column if not exists utm_source    text;
 alter table public.contact_submissions add column if not exists utm_medium    text;

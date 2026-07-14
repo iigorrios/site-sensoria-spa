@@ -29,9 +29,9 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data: ContactInput) => {
-    const ok = await submit(data, { origem: 'contato' });
-    if (!ok) return;
-    // Captura o lead e, em seguida, leva a conversa para o WhatsApp.
+    // Tenta salvar o lead (best-effort) e leva a conversa para o WhatsApp de
+    // qualquer forma — a mensagem já contém os dados, então nada se perde.
+    await submit(data, { origem: 'contato' });
     const url = whatsappLink(
       whatsappMessages.lead(
         { nome: data.nome, experiencia: data.experiencia, unidade: data.unidade },

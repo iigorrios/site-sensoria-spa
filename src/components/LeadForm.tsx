@@ -65,9 +65,12 @@ export default function LeadForm({
 
   const onSubmit = async (data: ContactInput) => {
     const ok = await submit(data, { categoria: context, origem: source });
-    if (!ok) return;
-    onSuccess?.();
+
+    // O objetivo do formulário é levar ao WhatsApp já com o lead. Se o
+    // salvamento no servidor falhar, seguimos para o WhatsApp mesmo assim —
+    // a própria mensagem carrega os dados, então nenhum lead é perdido.
     if (redirect) {
+      onSuccess?.();
       const url = whatsappLink(
         whatsappMessages.lead(
           {
@@ -84,9 +87,13 @@ export default function LeadForm({
       setTimeout(() => {
         window.location.href = url;
       }, 700);
-    } else {
-      reset();
+      return;
     }
+
+    // Sem redirect (ex.: seção de lead da home): só limpa em caso de sucesso.
+    if (!ok) return;
+    onSuccess?.();
+    reset();
   };
 
   const field = cn(
