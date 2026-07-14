@@ -30,6 +30,24 @@ const dateFmt = new Intl.DateTimeFormat('pt-BR', {
 });
 const dayLabelFmt = new Intl.DateTimeFormat('pt-BR', { day: '2-digit', month: '2-digit' });
 
+/** Presets do filtro de período. value = nº de dias (''=todo o período). */
+const PERIOD_OPTIONS: { value: string; label: string }[] = [
+  { value: '', label: 'Todo o período' },
+  { value: '1', label: 'Hoje' },
+  { value: '7', label: 'Últimos 7 dias' },
+  { value: '14', label: 'Últimos 14 dias' },
+  { value: '30', label: 'Últimos 30 dias' },
+  { value: '90', label: 'Últimos 90 dias' },
+];
+
+/** Início do dia (00:00) N dias atrás (N=0 → hoje). */
+function startOfDayAgo(days: number): Date {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() - days);
+  return d;
+}
+
 function formatDate(iso: string): string {
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? iso : dateFmt.format(d);
@@ -85,6 +103,7 @@ export default function AdminDashboard({ leads, loadError }: Props) {
   const [query, setQuery] = useState('');
   const [unidade, setUnidade] = useState('');
   const [experiencia, setExperiencia] = useState('');
+  const [period, setPeriod] = useState('');
   const [loggingOut, setLoggingOut] = useState(false);
 
   // Opções dos selects — a partir de TODOS os leads (não some ao filtrar).
@@ -96,9 +115,15 @@ export default function AdminDashboard({ leads, loadError }: Props) {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
+    const periodDays = period ? Number(period) : 0;
+    const cutoff = periodDays > 0 ? startOfDayAgo(periodDays - 1).getTime() : 0;
     return leads.filter((l) => {
       if (unidade && l.unidade !== unidade) return false;
       if (experiencia && l.experiencia !== experiencia) return false;
+      if (cutoff) {
+        const t = new Date(l.created_at).getTime();
+        if (Number.isNaN(t) || t < cutoff) return false;
+      }
       if (!q) return true;
       const haystack = [
         l.nome,
@@ -115,9 +140,9 @@ export default function AdminDashboard({ leads, loadError }: Props) {
         .toLowerCase();
       return haystack.includes(q);
     });
-  }, [leads, query, unidade, experiencia]);
+  }, [leads, query, unidade, experiencia, period]);
 
-  const hasFilters = !!(query || unidade || experiencia);
+  const hasFilters = !!(query || unidade || experiencia || period);
 
   // Métricas (refletem o conjunto filtrado).
   const stats = useMemo(() => {
@@ -134,15 +159,17 @@ export default function AdminDashboard({ leads, loadError }: Props) {
       bySource.set(src, (bySource.get(src) ?? 0) + 1);
     }
 
-    // Série dos últimos 14 dias.
+    // Série diária — acompanha o período (limitada a 31 barras para legibilidade).
+    const chartDays = period ? Math.min(Number(period), 31) : 14;
     const days: { key: string; label: string; count: number }[] = [];
-    for (let i = 13; i >= 0; i--) {
+    for (let i = chartDays - 1; i >= 0; i--) {
       const d = new Date(now);
       d.setDate(now.getDate() - i);
       const key = dayKey(d);
       days.push({ key, label: dayLabelFmt.format(d), count: byDay.get(key) ?? 0 });
     }
     const maxDay = Math.max(1, ...days.map((d) => d.count));
+    const showDayLabels = chartDays <= 16;
     const today = days[days.length - 1]?.count ?? 0;
     const last7 = days.slice(-7).reduce((s, d) => s + d.count, 0);
 
@@ -151,8 +178,18 @@ export default function AdminDashboard({ leads, loadError }: Props) {
       .sort((a, b) => b.count - a.count);
     const maxSource = Math.max(1, ...sources.map((s) => s.count));
 
-    return { total: filtered.length, today, last7, withPhone, days, maxDay, sources, maxSource };
-  }, [filtered]);
+    return {
+      total: filtered.length,
+      today,
+      last7,
+      withPhone,
+      days,
+      maxDay,
+      showDayLabels,
+      sources,
+      maxSource,
+    };
+  }, [filtered, period]);
 
   async function logout() {
     setLoggingOut(true);
@@ -168,6 +205,7 @@ export default function AdminDashboard({ leads, loadError }: Props) {
     setQuery('');
     setUnidade('');
     setExperiencia('');
+    setPeriod('');
   }
 
   const selectClass =
@@ -215,7 +253,7 @@ export default function AdminDashboard({ leads, loadError }: Props) {
           {/* Leads por dia (14 dias) */}
           <section className="rounded-2xl border border-sensoria-fog bg-white p-5 lg:col-span-3">
             <h2 className="font-sans text-xs uppercase tracking-wide2 text-sensoria-graphite/50">
-              Leads por dia · últimos 14 dias
+              Leads por dia · {stats.days.length} dias
             </h2>
             <div className="mt-5 flex h-36 items-end gap-1.5">
               {stats.days.map((d) => (
@@ -231,7 +269,9 @@ export default function AdminDashboard({ leads, loadError }: Props) {
                     className="w-full rounded-t bg-sensoria-green/80 transition-colors group-hover:bg-sensoria-green"
                     style={{ height: `${Math.max(d.count ? 6 : 2, (d.count / stats.maxDay) * 100)}%` }}
                   />
-                  <span className="font-sans text-[9px] text-sensoria-graphite/40">{d.label}</span>
+                  {stats.showDayLabels && (
+                    <span className="font-sans text-[9px] text-sensoria-graphite/40">{d.label}</span>
+                  )}
                 </div>
               ))}
             </div>
@@ -266,7 +306,7 @@ export default function AdminDashboard({ leads, loadError }: Props) {
         </div>
 
         {/* Filtros */}
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-[1fr_auto_auto_auto]">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-[1fr_auto_auto_auto_auto]">
           <div className="flex items-center gap-2 rounded-xl border border-sensoria-fog bg-white px-4">
             <Search className="h-4 w-4 flex-none text-sensoria-graphite/40" />
             <input
@@ -276,6 +316,18 @@ export default function AdminDashboard({ leads, loadError }: Props) {
               className="h-11 w-full bg-transparent font-sans text-sm text-sensoria-graphite outline-none placeholder:text-sensoria-graphite/40"
             />
           </div>
+          <select
+            value={period}
+            onChange={(e) => setPeriod(e.target.value)}
+            className={selectClass}
+            aria-label="Filtrar por período"
+          >
+            {PERIOD_OPTIONS.map((p) => (
+              <option key={p.value} value={p.value}>
+                {p.label}
+              </option>
+            ))}
+          </select>
           <select
             value={unidade}
             onChange={(e) => setUnidade(e.target.value)}
