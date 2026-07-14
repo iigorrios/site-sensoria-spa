@@ -26,7 +26,7 @@
       "eyebrow": "Terapias Corporales",
       "title": "Alivio para el cuerpo, paz para la mente",
       "subtitle": "Desacelera, respira, vuelve a empezar.",
-      "description": "Masajes y protocolos terapéuticos para relajar, aliviar tensiones y recuperar el cuerpo — con toque consciente, aceites esenciales exclusivos y productos 100% naturales.",
+      "description": "Masajes y protocolos terapéuticos para relajar, aliviar tensiones y recuperar el cuerpo — con toque consciente, aceites esenciales exclusivos y productos naturales.",
       "audienceTitle": "Hechas para ti que…",
       "audience": {
         "0": "Necesitas desacelerar y aliviar el exceso mental",
@@ -46,7 +46,7 @@
       "eyebrow": "Jornadas Sensoriales",
       "title": "Un regalo que queda en la memoria",
       "subtitle": "Para celebrar, regalar y vivir en pareja.",
-      "description": "Rituales sensoriales completos para regalar a quien amas, vivir una experiencia en pareja o reservar un momento solo para ti — desde la bienvenida hasta el brindis final.",
+      "description": "Rituales sensoriales completos para regalar a quien amas, vivir una experiencia en pareja o reservar un momento solo para ti — desde la bienvenida hasta el brindis final. Un verdadero día de spa (spa day) en Río.",
       "audienceTitle": "Perfectas para…",
       "audience": {
         "0": "Regalar a alguien especial una experiencia inolvidable",
@@ -82,16 +82,16 @@
     "eyebrow": "Spa urbano · Río de Janeiro & Niterói",
     "title": "Una pausa sensorial",
     "subtitle": "para desacelerar el cuerpo y calmar la mente.",
-    "description": "Masajes, jornadas sensoriales y protocolos corporales con ingredientes 100% naturales — la naturaleza en tu día.",
+    "description": "Masajes, jornadas sensoriales y protocolos corporales con ingredientes naturales — la naturaleza en tu día.",
     "scroll": "Desplázate para descubrir"
   },
   "home": {
     "introEyebrow": "Carioca por Naturaleza",
     "introTitle": "El cuidado genuino se une a la sofisticación natural",
-    "introText": "Desde hace 20 años llevamos lo mejor de la naturaleza a tu día a día. Cada experiencia está diseñada para equilibrar cuerpo, mente y espíritu — un refugio de serenidad en medio del ritmo de la ciudad.",
+    "introText": "Desde hace 24 años llevamos lo mejor de la naturaleza a tu día a día. Cada experiencia está diseñada para equilibrar cuerpo, mente y espíritu — un refugio de serenidad en medio del ritmo de la ciudad.",
     "experiencesEyebrow": "Experiencias",
     "experiencesTitle": "Jornadas y terapias para reconectar",
-    "experiencesText": "Desde la jornada sensorial completa hasta una terapia puntual, cada protocolo combina toque consciente, aceites esenciales exclusivos y productos 100% naturales.",
+    "experiencesText": "Desde la jornada sensorial completa hasta una terapia puntual, cada protocolo combina toque consciente, aceites esenciales exclusivos y productos naturales.",
     "pathsEyebrow": "Cómo podemos cuidarte",
     "pathsTitle": "Dos caminos para reconectarte",
     "pathsText": "Sea cual sea tu momento — tenemos una experiencia diseñada para él.",
@@ -109,7 +109,7 @@
     "ctaTitle": "Tu cuerpo está pidiendo una pausa",
     "ctaText": "Elige tu experiencia. Nosotros nos ocupamos del resto.",
     "philosophyEyebrow": "Nuestro compromiso",
-    "philosophyTitle": "100% natural, vegano y cruelty-free",
+    "philosophyTitle": "Natural, vegano y cruelty-free",
     "philosophyText": "Formulaciones exclusivas con insumos naturales de nuestra biodiversidad, probadas en pureza y eficacia. Bienestar que te respeta a ti y al planeta.",
     "shopEyebrow": "Tienda online",
     "shopText": "Lleva Sensória a casa. Conoce nuestros productos naturales en la tienda online oficial.",
@@ -134,7 +134,7 @@
       "1": "Aromaterapia con aceites esenciales Sensória",
       "2": "Musicoterapia con la playlist Sensória Spa",
       "3": "Grounding Ritual de conexión y enraizamiento",
-      "4": "Cremas y sinergias 100% naturales Sensória",
+      "4": "Cremas y sinergias naturales Sensória",
       "5": "Terapeutas certificadas según el estándar Sensória"
     }
   },
@@ -154,7 +154,7 @@
   "about": {
     "eyebrow": "Nosotros",
     "title": "Llevamos lo mejor de la naturaleza a tu día a día",
-    "intro": "Desde hace 20 años somos un equipo apasionado por lo que hacemos, llevando la naturaleza a tu día de forma práctica y eficiente, ayudando a mejorar tu salud, belleza y bienestar.",
+    "intro": "Desde hace 24 años somos un equipo apasionado por lo que hacemos, llevando la naturaleza a tu día de forma práctica y eficiente, ayudando a mejorar tu salud, belleza y bienestar.",
     "commitmentTitle": "Nuestro Compromiso",
     "commitmentText": "En Sensória Spa, nuestro compromiso va más allá de la excelencia en bienestar. Usamos solo insumos naturales en todas nuestras formulaciones de cosméticos, alimentos, suplementos y productos de higiene. Somos totalmente veganos, con fórmulas naturales, eco-friendly y cruelty-free.",
     "commitmentText2": "Creemos en ser un agente transformador en la sociedad — con la Universidad Sensória, que capacita personas a través del conocimiento, y el proyecto Familia Sensória, que apoya a madres a generar ingresos desde casa.",
@@ -169,12 +169,12 @@
     "sensorialTitle": "Experiencia Sensorial Completa",
     "sensorialText": "A través del aroma, la música relajante y la iluminación suave, creamos el ambiente perfecto para tu relajación total.",
     "productsTitle": "Sensória Works",
-    "productsText": "A lo largo de los años desarrollamos formulaciones exclusivas de cosméticos 100% naturales y una línea completa de aceites esenciales y vegetales para las demandas de la vida moderna.",
+    "productsText": "A lo largo de los años desarrollamos formulaciones exclusivas de cosméticos naturales y una línea completa de aceites esenciales y vegetales para las demandas de la vida moderna.",
     "productLines": {
       "respire": { "title": "Respire, Inspire", "text": "Perfumes de ambiente inspirados en los puntos turísticos de Río." },
       "amazonia": { "title": "Amazônia", "text": "Productos con las mejores materias primas de la mayor biodiversidad del planeta." },
       "aromacologia": { "title": "Aromacología", "text": "La influencia de los aromas en las emociones, para bienestar y piel nutrida." },
-      "skincare": { "title": "Skincare", "text": "Una línea completa de skincare eficiente, 100% natural y vegana." },
+      "skincare": { "title": "Skincare", "text": "Una línea completa de skincare eficiente, natural y vegana." },
       "tastes": { "title": "Tastes", "text": "Cafés especiales y tés e infusiones con un toque de aceites esenciales." }
     }
   },
@@ -184,10 +184,10 @@
     "description": "¿Aún con dudas? Habla con nosotros por WhatsApp.",
     "items": {
       "0": { "q": "¿Cómo reservo?", "a": "La reserva se hace por WhatsApp o mediante el formulario de contacto de este sitio. Elige la experiencia y la sede deseada, y nuestro equipo confirma el mejor horario para ti." },
-      "1": { "q": "¿Qué incluye cada experiencia?", "a": "Todas las Jornadas y Terapias incluyen degustación de tés naturales y café especial, aromaterapia con aceites esenciales Sensória, musicoterapia, el Grounding Ritual, cremas y sinergias 100% naturales, y terapeutas certificadas según el estándar Sensória." },
+      "1": { "q": "¿Qué incluye cada experiencia?", "a": "Todas las Jornadas y Terapias incluyen degustación de tés naturales y café especial, aromaterapia con aceites esenciales Sensória, musicoterapia, el Grounding Ritual, cremas y sinergias naturales, y terapeutas certificadas según el estándar Sensória." },
       "2": { "q": "¿Puedo vivir una experiencia en pareja?", "a": "Sí. La mayoría de las Jornadas tienen precio individual y en pareja, ideales para regalar o compartir el momento con quien amas." },
       "3": { "q": "¿Tienen tarjeta de regalo?", "a": "Tenemos la Tarjeta de Regalo Sensória: tú eliges la sesión y nosotros nos ocupamos del resto. Es el regalo que queda en la memoria. Solicítala por WhatsApp." },
-      "4": { "q": "¿Los productos son naturales?", "a": "Sí. Somos totalmente veganos, con formulaciones 100% naturales, eco-friendly y cruelty-free, desarrolladas con materias primas seleccionadas de nuestra biodiversidad." },
+      "4": { "q": "¿Los productos son naturales?", "a": "Sí. Somos totalmente veganos, con formulaciones naturales, eco-friendly y cruelty-free, desarrolladas con materias primas seleccionadas de nuestra biodiversidad." },
       "5": { "q": "¿En qué sedes atienden?", "a": "Estamos en cinco direcciones: Icaraí (Niterói), Ipanema, Leblon, Península (Barra da Tijuca) y Barra – Hotel Venit. Consulta direcciones y horarios en la página de Sedes." },
       "6": { "q": "¿Cuál es la política de reserva y cancelación?", "a": "Recomendamos reservar con antelación para garantizar horario y sede. Para reprogramaciones y cancelaciones, contacta a nuestro equipo por WhatsApp con la mayor antelación posible." },
       "7": { "q": "¿Qué es el Grounding Ritual?", "a": "Es el baño de pies ritual que da inicio a toda Jornada y Terapia Sensória: agua tibia con sales terapéuticas (integral y Epsom), manzanilla y aceite esencial exclusivo, seguido de reflexología en los pies y masaje en las pantorrillas. Promueve relajación profunda, limpieza energética y prepara cuerpo y mente para la experiencia. Dura de 10 a 15 minutos." }
@@ -297,21 +297,21 @@
   },
   "meta": {
     "homeTitle": "Sensória Spa · Spa urbano carioca",
-    "homeDescription": "Masajes, jornadas sensoriales y terapias corporales con ingredientes 100% naturales en Río de Janeiro y Niterói. Carioca por Naturaleza.",
+    "homeDescription": "Masajes, jornadas sensoriales y terapias corporales con ingredientes naturales en Río de Janeiro y Niterói. Carioca por Naturaleza.",
     "experiencesTitle": "Experiencias · Sensória Spa",
-    "experiencesDescription": "Jornadas sensoriales y terapias corporales con aceites esenciales exclusivos y productos 100% naturales.",
+    "experiencesDescription": "Jornadas sensoriales y terapias corporales con aceites esenciales exclusivos y productos naturales.",
     "unitsTitle": "Sedes · Sensória Spa",
     "unitsDescription": "Cinco sedes en Río de Janeiro y Niterói: Icaraí, Ipanema, Leblon, Península y Barra.",
     "aboutTitle": "Nosotros · Sensória Spa",
-    "aboutDescription": "Desde hace 20 años llevando lo mejor de la naturaleza a tu día. 100% natural, vegano y cruelty-free.",
+    "aboutDescription": "Desde hace 24 años llevando lo mejor de la naturaleza a tu día. natural, vegano y cruelty-free.",
     "faqTitle": "Dudas · Sensória Spa",
     "faqDescription": "Dudas frecuentes sobre reservas, experiencias, tarjeta de regalo y sedes.",
     "contactTitle": "Contacto · Sensória Spa",
     "contactDescription": "Reserva tu experiencia por WhatsApp o formulario. Estamos listos para cuidar de ti.",
     "terapiasTitle": "Terapias Corporales · Sensória Spa",
-    "terapiasDescription": "Masajes y terapias para relajar, aliviar tensiones y recuperar el cuerpo. Terapia deportiva, relajante y más — 100% natural, en Río y Niterói.",
+    "terapiasDescription": "Masajes y terapias para relajar, aliviar tensiones y recuperar el cuerpo. Terapia deportiva, relajante y más — natural, en Río y Niterói.",
     "jornadasTitle": "Jornadas Sensoriales · Sensória Spa",
-    "jornadasDescription": "Rituales sensoriales para regalar, celebrar y vivir en pareja. Jornadas completas 100% naturales en Río de Janeiro y Niterói.",
+    "jornadasDescription": "Spa day / day spa en Río: rituales sensoriales para regalar, celebrar y vivir en pareja. Un día de spa completo en Río de Janeiro y Niterói.",
     "clubesTitle": "Clubes Sensória · Sensória Spa",
     "clubesDescription": "Planes de suscripción del Sensória Spa: sesiones, vouchers acumulables, cortesías y descuentos. Clubes Gold, Safira, Platinum y Diamond."
   }

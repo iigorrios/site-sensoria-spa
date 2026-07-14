@@ -165,7 +165,7 @@ export default async function HomePage({
             />
             <div className="mt-10 grid grid-cols-3 gap-6">
               {[
-                { icon: Leaf, label: '100% Natural' },
+                { icon: Leaf, label: 'Natural' },
                 { icon: HandHeart, label: 'Cruelty-free' },
                 { icon: Sparkles, label: 'Vegano' },
               ].map((item, i) => (

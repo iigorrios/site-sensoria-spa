@@ -61,8 +61,9 @@ Proporção recomendada **4:5** (retrato), ~1000×1250px.
 
 **Jornadas** — `public/images/experiences/jornadas/`
 `amazonia.jpg` · `pedra-da-gavea.jpg` · `arpoador.jpg` · `pao-de-acucar.jpg` ·
-`parque-lage.jpg` · `prainha.jpg` · `itacoatiara.jpg` · `spa-detox.jpg` ·
+`parque-lage.jpg` · `prainha.jpg` · `corcovado.jpg` · `floresta-da-tijuca.jpg` ·
 `arco-iris.jpg` · `celebrar.jpg`
+*(jpg ou png — o site aceita as duas extensões automaticamente.)*
 
 **Terapias** — `public/images/experiences/terapias/`
 `brisa.jpg` · `flow.jpg` · `toque-vulcanico.jpg` · `lumina.jpg` · `trama.jpg` ·
@@ -96,7 +97,7 @@ Proporção **3:2** (paisagem), ~1200×800px. `public/images/units/`
 
 ## 🎁 Cartão Presente (seção na Home)
 `public/images/gift/`
-`cartao-presente.jpg` — foto do cartão/envelope lacrado (ex.: o envelope com selo
+`cartao_presente.png` — foto do cartão/envelope lacrado (ex.: o envelope com selo
 de cera). Proporção **4:3** (paisagem), ~1200×900px. Pode ser jpg **ou** png.
 
 ## ✨ Galeria (uso livre em home/sobre)

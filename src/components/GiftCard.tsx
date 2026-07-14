@@ -23,7 +23,7 @@ export default async function GiftCard() {
       <div className="container-editorial grid gap-14 md:grid-cols-2 md:items-center">
         <Parallax offset={40} className="order-2 aspect-[4/3] rounded-2xl md:order-1">
           <ImagePlaceholder
-            src="/images/gift/cartao-presente.jpg"
+            src="/images/gift/cartao_presente.png"
             alt={t('title')}
             fill
             sizes="(max-width:768px) 100vw, 50vw"
