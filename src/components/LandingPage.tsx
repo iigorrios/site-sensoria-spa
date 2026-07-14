@@ -5,6 +5,7 @@ import Reveal from '@/components/motion/Reveal';
 import ExperienceCard from '@/components/ExperienceCard';
 import LeadForm from '@/components/LeadForm';
 import LeadDialog from '@/components/LeadDialog';
+import AddonsSection from '@/components/AddonsSection';
 import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 import LeafIcon from '@/components/ui/LeafIcon';
 import SkylineBg from '@/components/ui/SkylineBg';
@@ -154,6 +155,9 @@ export default async function LandingPage({
           </div>
         </div>
       </section>
+
+      {/* Adicionais (complementos) */}
+      <AddonsSection />
 
       {/* Formulário */}
       <section id="agendar" className="scroll-mt-24 bg-sensoria-white py-24 md:py-32">

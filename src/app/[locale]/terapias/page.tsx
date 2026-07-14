@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import LandingPage from '@/components/LandingPage';
 import JsonLd from '@/components/JsonLd';
-import { itemListSchema, breadcrumbSchema } from '@/lib/jsonld';
+import { itemListSchema, breadcrumbSchema, addonsSchema } from '@/lib/jsonld';
 import { alternatesFor, SITE_URL } from '@/lib/seo';
 import { terapias, type Locale } from '@/data/experiences';
 
@@ -34,7 +34,7 @@ export default async function TerapiasLandingPage({
 
   return (
     <>
-      <JsonLd data={[itemListSchema(terapias, l), breadcrumb]} />
+      <JsonLd data={[itemListSchema(terapias, l), breadcrumb, addonsSchema(l)]} />
       <LandingPage
         ns="terapias"
         category="terapia"

@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import LandingPage from '@/components/LandingPage';
 import VenitSection from '@/components/VenitSection';
 import JsonLd from '@/components/JsonLd';
-import { itemListSchema, breadcrumbSchema } from '@/lib/jsonld';
+import { itemListSchema, breadcrumbSchema, addonsSchema } from '@/lib/jsonld';
 import { alternatesFor, SITE_URL } from '@/lib/seo';
 import { jornadas, venitJornadas, type Locale } from '@/data/experiences';
 
@@ -35,7 +35,7 @@ export default async function JornadasLandingPage({
 
   return (
     <>
-      <JsonLd data={[itemListSchema([...jornadas, ...venitJornadas], l), breadcrumb]} />
+      <JsonLd data={[itemListSchema([...jornadas, ...venitJornadas], l), breadcrumb, addonsSchema(l)]} />
       <LandingPage
         ns="jornadas"
         category="jornada"

@@ -1,6 +1,6 @@
 import { siteConfig } from '@/config/site';
 import { SITE_URL } from '@/lib/seo';
-import { getStartingPrice, type Experience, type Locale } from '@/data/experiences';
+import { adicionais, getStartingPrice, type Experience, type Locale } from '@/data/experiences';
 import { units, type Unit } from '@/data/units';
 
 const ORG_ID = `${SITE_URL}/#organization`;
@@ -128,6 +128,26 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
       position: i + 1,
       name: it.name,
       item: it.url,
+    })),
+  };
+}
+
+/** OfferCatalog dos serviços adicionais (complementos), com preços. */
+export function addonsSchema(locale: Locale) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    name: 'Serviços adicionais · Sensória Spa',
+    itemListElement: adicionais.map((a) => ({
+      '@type': 'Offer',
+      priceCurrency: 'BRL',
+      price: a.prices[0]?.individual ?? a.prices[0]?.value ?? 0,
+      itemOffered: {
+        '@type': 'Service',
+        name: a.name[locale],
+        description: a.description[locale],
+        provider: { '@type': 'DaySpa', name: siteConfig.name, '@id': ORG_ID },
+      },
     })),
   };
 }
