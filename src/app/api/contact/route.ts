@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getServerSupabase } from '@/lib/supabase';
 import { contactSchema } from '@/lib/contact-schema';
 import { sendLeadEvent } from '@/lib/meta-capi';
+import { sendLeadToKommo } from '@/lib/kommo';
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -61,25 +62,48 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'server_error' }, { status: 500 });
   }
 
-  // Meta Conversions API (dedup com o Pixel via event_id). Não bloqueia o sucesso.
-  await sendLeadEvent({
-    eventId: d.event_id || undefined,
-    eventSourceUrl,
-    email: d.email,
-    phone: d.telefone || undefined,
-    firstName: d.nome?.split(' ')[0],
-    fbp: d.fbp || undefined,
-    fbc: d.fbc || undefined,
-    fbclid: d.fbclid || undefined,
-    clientIp,
-    userAgent,
-    customData: {
-      category: d.categoria || undefined,
-      experience: d.experiencia || undefined,
+  // Integrações externas (best-effort, em paralelo). Nenhuma delas quebra o
+  // sucesso do lead — ambas tratam erros internamente e nunca lançam.
+  //  • Meta Conversions API (dedup com o Pixel via event_id).
+  //  • Kommo CRM (cria contato + lead).
+  await Promise.allSettled([
+    sendLeadEvent({
+      eventId: d.event_id || undefined,
+      eventSourceUrl,
+      email: d.email,
+      phone: d.telefone || undefined,
+      firstName: d.nome?.split(' ')[0],
+      fbp: d.fbp || undefined,
+      fbc: d.fbc || undefined,
+      fbclid: d.fbclid || undefined,
+      clientIp,
+      userAgent,
+      customData: {
+        category: d.categoria || undefined,
+        experience: d.experiencia || undefined,
+        utm_source: d.utm_source || undefined,
+        utm_campaign: d.utm_campaign || undefined,
+      },
+    }),
+    sendLeadToKommo({
+      nome: d.nome,
+      email: d.email,
+      telefone: d.telefone || undefined,
+      unidade: d.unidade || undefined,
+      experiencia: d.experiencia || undefined,
+      categoria: d.categoria || undefined,
+      origem: d.origem || undefined,
       utm_source: d.utm_source || undefined,
+      utm_medium: d.utm_medium || undefined,
       utm_campaign: d.utm_campaign || undefined,
-    },
-  });
+      utm_content: d.utm_content || undefined,
+      utm_term: d.utm_term || undefined,
+      gclid: d.gclid || undefined,
+      fbclid: d.fbclid || undefined,
+      referrer: d.referrer || undefined,
+      landing_page: d.landing_page || undefined,
+    }),
+  ]);
 
   return NextResponse.json({ ok: true }, { status: 200 });
 }
