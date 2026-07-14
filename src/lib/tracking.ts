@@ -25,6 +25,24 @@ export type Attribution = Partial<Record<AttributionKey, string>> & {
   landing_page?: string;
 };
 
+/**
+ * Placeholder ValueTrack do Google Ads não substituído (ex.: "{campaignid}",
+ * "{creative}", "{keyword}", "{gclid}"). Nesses casos o anúncio veio com o
+ * template literal — não devemos registrar isso como se fosse a origem real.
+ */
+function isPlaceholder(value?: string): boolean {
+  return !!value && /[{}]/.test(value);
+}
+
+/** Remove valores que são placeholders ValueTrack não resolvidos. */
+function sanitize(attr: Attribution): Attribution {
+  const clean = { ...attr } as Record<string, string | undefined>;
+  for (const k of Object.keys(clean)) {
+    if (isPlaceholder(clean[k])) delete clean[k];
+  }
+  return clean as Attribution;
+}
+
 /** Lê os parâmetros da URL atual e persiste (first-touch). Chamar no load. */
 export function captureAttribution(): void {
   if (typeof window === 'undefined') return;
@@ -35,8 +53,9 @@ export function captureAttribution(): void {
   let changed = false;
 
   for (const key of ATTRIBUTION_KEYS) {
-    const value = params.get(key);
-    if (!value) continue;
+    const value = params.get(key)?.trim();
+    // Ignora vazios e placeholders ValueTrack não substituídos ({campaignid}…).
+    if (!value || isPlaceholder(value)) continue;
     // UTMs: first-touch (não sobrescreve). Click IDs: sempre o mais recente.
     const isClickId = key === 'gclid' || key === 'fbclid';
     if (isClickId || !next[key]) {
@@ -77,14 +96,14 @@ export function getAttribution(): Attribution {
   if (typeof window === 'undefined') return {};
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw) as Attribution;
+    if (raw) return sanitize(JSON.parse(raw) as Attribution);
   } catch {
     /* ignore */
   }
   // Fallback: cookie (caso o localStorage tenha sido limpo entre páginas).
   try {
     const cookie = readCookie(STORAGE_KEY);
-    if (cookie) return JSON.parse(cookie) as Attribution;
+    if (cookie) return sanitize(JSON.parse(cookie) as Attribution);
   } catch {
     /* ignore */
   }
