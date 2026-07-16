@@ -113,8 +113,70 @@ function buildNote(lead: KommoLeadInput): string {
   return ['Lead recebido pelo site.', ...lines].join('\n');
 }
 
-/** Campos personalizados do lead (só os preenchidos). */
-function buildCustomFields(lead: KommoLeadInput): Record<string, unknown>[] {
+interface KommoEnum {
+  id: number;
+  value: string;
+}
+interface KommoField {
+  id: number;
+  type: string;
+  enums?: KommoEnum[] | null;
+}
+
+/** Tipos de campo que exigem `enum_id` (opção da lista) em vez de texto livre. */
+const SELECT_TYPES = new Set(['select', 'multiselect', 'radiobutton']);
+
+/** Cache dos metadados dos campos (por instância; evita 1 GET por lead). */
+let fieldsCache: { at: number; byId: Map<number, KommoField> } | null = null;
+const FIELDS_TTL_MS = 10 * 60 * 1000;
+
+/** Normaliza para comparar sem depender de acento/caixa/espaços. */
+function norm(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '') // remove marcas de acento
+    .toLowerCase()
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Lê os metadados dos campos personalizados de lead (tipo e opções de lista).
+ * Se falhar, devolve mapa vazio — aí os campos são enviados como texto (o Kommo
+ * ainda casa o texto com a opção quando ele bate exatamente).
+ */
+async function getLeadFields(
+  baseUrl: string,
+  headers: Record<string, string>
+): Promise<Map<number, KommoField>> {
+  if (fieldsCache && Date.now() - fieldsCache.at < FIELDS_TTL_MS) return fieldsCache.byId;
+  try {
+    const res = await fetch(`${baseUrl}/api/v4/leads/custom_fields?limit=250`, { headers });
+    if (!res.ok) {
+      console.error('Kommo custom_fields error:', res.status, await res.text());
+      return new Map();
+    }
+    const data = (await res.json()) as {
+      _embedded?: { custom_fields?: KommoField[] };
+    };
+    const byId = new Map((data._embedded?.custom_fields ?? []).map((f) => [f.id, f]));
+    fieldsCache = { at: Date.now(), byId };
+    return byId;
+  } catch (err) {
+    console.error('Kommo custom_fields request failed:', err);
+    return new Map();
+  }
+}
+
+/**
+ * Campos personalizados do lead (só os preenchidos).
+ * Campos do tipo lista recebem `enum_id` resolvido a partir do texto — assim um
+ * valor que não existe na lista é apenas ignorado, em vez de derrubar o lead.
+ */
+function buildCustomFields(
+  lead: KommoLeadInput,
+  byId: Map<number, KommoField>
+): Record<string, unknown>[] {
   const pairs: [number, string | undefined][] = [
     [FIELD.unidade, lead.unidade],
     [FIELD.experiencia, lead.experiencia],
@@ -126,9 +188,28 @@ function buildCustomFields(lead: KommoLeadInput): Record<string, unknown>[] {
     [FIELD.utm_term, lead.utm_term],
     [FIELD.gclid, lead.gclid],
   ];
-  return pairs
-    .filter(([, v]) => v && v.trim())
-    .map(([field_id, value]) => ({ field_id, values: [{ value }] }));
+
+  const out: Record<string, unknown>[] = [];
+  for (const [field_id, raw] of pairs) {
+    const value = raw?.trim();
+    if (!value) continue;
+
+    const meta = byId.get(field_id);
+    if (meta && SELECT_TYPES.has(meta.type)) {
+      const match = meta.enums?.find((e) => norm(e.value) === norm(value));
+      if (match) {
+        out.push({ field_id, values: [{ enum_id: match.id }] });
+      } else {
+        // Valor fora da lista: ignora só este campo (o dado segue na nota/tag).
+        console.warn(
+          `Kommo: "${value}" não existe na lista do campo ${field_id} — campo ignorado.`
+        );
+      }
+      continue;
+    }
+    out.push({ field_id, values: [{ value }] });
+  }
+  return out;
 }
 
 /**
@@ -219,11 +300,6 @@ export async function sendLeadToKommo(lead: KommoLeadInput): Promise<void> {
     baseLead.status_id = Number(process.env.KOMMO_STATUS_ID);
   }
 
-  const customFields = buildCustomFields(lead);
-  const fullLead = customFields.length
-    ? { ...baseLead, custom_fields_values: customFields }
-    : baseLead;
-
   async function createLead(body: Record<string, unknown>): Promise<Response> {
     return fetch(`${baseUrl}/api/v4/leads/complex`, {
       method: 'POST',
@@ -233,8 +309,17 @@ export async function sendLeadToKommo(lead: KommoLeadInput): Promise<void> {
   }
 
   try {
-    // Cria as tags coloridas antes de anexá-las ao lead.
-    await ensureTags(baseUrl, headers, tags);
+    // Metadados dos campos (para resolver listas de seleção) e criação das tags
+    // coloridas — ambos antes de criar o lead, em paralelo.
+    const [fieldsMeta] = await Promise.all([
+      getLeadFields(baseUrl, headers),
+      ensureTags(baseUrl, headers, tags),
+    ]);
+
+    const customFields = buildCustomFields(lead, fieldsMeta);
+    const fullLead = customFields.length
+      ? { ...baseLead, custom_fields_values: customFields }
+      : baseLead;
 
     // 1) Cria lead + contato de uma vez.
     let res = await createLead(fullLead);
