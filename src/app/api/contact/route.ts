@@ -92,6 +92,7 @@ export async function POST(request: Request) {
       unidade: d.unidade || undefined,
       experiencia: d.experiencia || undefined,
       categoria: d.categoria || undefined,
+      mensagem: d.mensagem || undefined,
       origem: d.origem || undefined,
       utm_source: d.utm_source || undefined,
       utm_medium: d.utm_medium || undefined,
