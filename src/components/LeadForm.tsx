@@ -45,9 +45,16 @@ export default function LeadForm({
   const { status, submit, setStatus } = useLeadSubmit();
   const light = tone === 'light';
 
-  // Lista de experiências conforme a categoria (ou todas).
-  const options =
+  // Lista de experiências conforme a categoria (ou todas). A experiência
+  // pré-selecionada entra na lista mesmo que fique fora do recorte da
+  // categoria — `jornadas` não inclui as jornadas Venit, e sem isso o
+  // defaultExperience não casaria com nenhuma <option> e se perderia.
+  const base =
     context === 'terapia' ? terapias : context === 'jornada' ? jornadas : allExperiences;
+  const options =
+    defaultExperience && !base.some((e) => e.name[locale] === defaultExperience)
+      ? [...base, ...allExperiences.filter((e) => e.name[locale] === defaultExperience)]
+      : base;
 
   const {
     register,

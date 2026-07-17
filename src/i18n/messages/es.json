@@ -21,6 +21,67 @@
     "close": "Cerrar",
     "privacy": "Tus datos están seguros y no serán compartidos."
   },
+  "advisor": {
+    "fab": "Descubrir mi experiencia",
+    "title": "Consultor Sensorial",
+    "intro": "Cuéntame qué buscas y te sugiero la experiencia ideal. Son tres preguntas rápidas.",
+    "step": "{current} de {total}",
+    "back": "Volver",
+    "restart": "Empezar de nuevo",
+    "close": "Cerrar",
+    "questions": {
+      "paraQuem": "¿Para quién es esta experiencia?",
+      "objetivo": "¿Qué buscas más ahora?",
+      "tempo": "¿Cuánto tiempo tienes?",
+      "unidade": "¿Qué unidad prefieres?"
+    },
+    "options": {
+      "paraQuem": {
+        "mim": "Para mí",
+        "presentear": "Para regalar",
+        "casal": "Para los dos"
+      },
+      "objetivo": {
+        "dor": "Aliviar dolores y tensiones",
+        "relaxar": "Relajarme profundamente",
+        "mente": "Desacelerar la mente",
+        "pele": "Renovar cuerpo y piel",
+        "energia": "Recuperar la energía",
+        "celebrar": "Celebrar una fecha"
+      },
+      "tempo": {
+        "curto": "Hasta 1 hora",
+        "medio": "Entre 1h y 2h",
+        "longo": "Medio día o más"
+      },
+      "unidade": {
+        "any": "Todavía no lo sé"
+      }
+    },
+    "reasons": {
+      "dor": "Alivia dolores y suelta la tensión acumulada.",
+      "relaxar": "Relajación profunda, de principio a fin.",
+      "mente": "Hecha para desacelerar la mente.",
+      "pele": "Renueva el cuerpo y la piel.",
+      "energia": "Devuelve energía y vitalidad.",
+      "celebrar": "Perfecta para marcar una fecha.",
+      "presentear": "Una jornada hecha para regalar.",
+      "casal": "Se puede vivir en pareja."
+    },
+    "result": {
+      "title": "Encontré lo que combina contigo",
+      "subtitle": "Elige una y sigue con nosotros por WhatsApp.",
+      "empty": "No encontré una combinación exacta. ¿La buscamos juntos?",
+      "from": "desde"
+    },
+    "want": "Quiero esta",
+    "see": "Ver experiencia",
+    "gift": {
+      "title": "¿Vas a regalar?",
+      "text": "La Tarjeta Regalo Sensória llega en hasta 24h, con carta y sello de cera.",
+      "cta": "Ver Tarjeta Regalo"
+    }
+  },
   "lp": {
     "terapias": {
       "eyebrow": "Terapias Corporales",

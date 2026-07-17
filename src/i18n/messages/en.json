@@ -21,6 +21,67 @@
     "close": "Close",
     "privacy": "Your data is safe and will never be shared."
   },
+  "advisor": {
+    "fab": "Find my experience",
+    "title": "Sensorial Advisor",
+    "intro": "Tell me what you are looking for and I will suggest the right experience. Just three quick questions.",
+    "step": "{current} of {total}",
+    "back": "Back",
+    "restart": "Start over",
+    "close": "Close",
+    "questions": {
+      "paraQuem": "Who is this experience for?",
+      "objetivo": "What are you looking for most right now?",
+      "tempo": "How much time do you have?",
+      "unidade": "Which location do you prefer?"
+    },
+    "options": {
+      "paraQuem": {
+        "mim": "For me",
+        "presentear": "As a gift",
+        "casal": "For the two of us"
+      },
+      "objetivo": {
+        "dor": "Relieve pain and tension",
+        "relaxar": "Relax deeply",
+        "mente": "Slow down my mind",
+        "pele": "Renew body and skin",
+        "energia": "Get my energy back",
+        "celebrar": "Celebrate an occasion"
+      },
+      "tempo": {
+        "curto": "Up to 1 hour",
+        "medio": "Between 1h and 2h",
+        "longo": "Half a day or more"
+      },
+      "unidade": {
+        "any": "I'm not sure yet"
+      }
+    },
+    "reasons": {
+      "dor": "Relieves pain and releases built-up tension.",
+      "relaxar": "Deep relaxation, from start to finish.",
+      "mente": "Made to slow the mind down.",
+      "pele": "Renews the body and the skin.",
+      "energia": "Brings energy and vitality back.",
+      "celebrar": "Perfect to mark an occasion.",
+      "presentear": "A journey made to be given.",
+      "casal": "Can be experienced as a couple."
+    },
+    "result": {
+      "title": "Here is what suits you",
+      "subtitle": "Pick one and continue with us on WhatsApp.",
+      "empty": "I could not find an exact match. Shall we find it together?",
+      "from": "from"
+    },
+    "want": "I want this one",
+    "see": "View experience",
+    "gift": {
+      "title": "Looking for a gift?",
+      "text": "The Sensória Gift Card arrives within 24h, with a letter and a wax seal.",
+      "cta": "See the Gift Card"
+    }
+  },
   "lp": {
     "terapias": {
       "eyebrow": "Body Therapies",

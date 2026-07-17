@@ -112,12 +112,13 @@ export default function SoundToggle() {
         )}
       </AnimatePresence>
 
-      {/* Botão flutuante para ligar/desligar depois */}
+      {/* Botão flutuante para ligar/desligar depois.
+          Fica acima do Consultor Sensorial, que ocupa o canto (ver AdvisorFab). */}
       <button
         onClick={toggle}
         aria-label={on ? t('on') : t('off')}
         aria-pressed={on}
-        className="fixed bottom-5 right-5 z-[80] flex h-12 w-12 items-center justify-center rounded-full border border-sensoria-white/30 bg-sensoria-green/85 text-sensoria-white shadow-lg backdrop-blur transition-colors hover:bg-sensoria-green md:bottom-8 md:right-8"
+        className="fixed bottom-20 right-5 z-[80] flex h-12 w-12 items-center justify-center rounded-full border border-sensoria-white/30 bg-sensoria-green/85 text-sensoria-white shadow-lg backdrop-blur transition-colors hover:bg-sensoria-green md:bottom-24 md:right-8"
       >
         {on ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
       </button>

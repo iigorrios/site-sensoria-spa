@@ -21,6 +21,67 @@
     "close": "Fechar",
     "privacy": "Seus dados estão seguros e não serão compartilhados."
   },
+  "advisor": {
+    "fab": "Descobrir minha experiência",
+    "title": "Consultor Sensorial",
+    "intro": "Me conta o que você procura e eu sugiro a experiência certa. São três perguntas rápidas.",
+    "step": "{current} de {total}",
+    "back": "Voltar",
+    "restart": "Recomeçar",
+    "close": "Fechar",
+    "questions": {
+      "paraQuem": "Para quem é essa experiência?",
+      "objetivo": "O que você mais procura agora?",
+      "tempo": "Quanto tempo você tem?",
+      "unidade": "Em qual unidade você prefere?"
+    },
+    "options": {
+      "paraQuem": {
+        "mim": "Para mim",
+        "presentear": "Para presentear",
+        "casal": "Para nós dois"
+      },
+      "objetivo": {
+        "dor": "Aliviar dores e tensões",
+        "relaxar": "Relaxar profundamente",
+        "mente": "Desacelerar a mente",
+        "pele": "Renovar corpo e pele",
+        "energia": "Recuperar a energia",
+        "celebrar": "Celebrar uma data"
+      },
+      "tempo": {
+        "curto": "Até 1 hora",
+        "medio": "Entre 1h e 2h",
+        "longo": "Meio dia ou mais"
+      },
+      "unidade": {
+        "any": "Ainda não sei"
+      }
+    },
+    "reasons": {
+      "dor": "Alivia dores e solta a tensão acumulada.",
+      "relaxar": "Relaxamento profundo, do começo ao fim.",
+      "mente": "Feita para desacelerar a mente.",
+      "pele": "Renova o corpo e a pele.",
+      "energia": "Devolve energia e vitalidade.",
+      "celebrar": "Perfeita para marcar uma data.",
+      "presentear": "Uma jornada que se oferece de presente.",
+      "casal": "Pode ser vivida a dois."
+    },
+    "result": {
+      "title": "Encontrei o que combina com você",
+      "subtitle": "Escolha uma e siga com a gente no WhatsApp.",
+      "empty": "Não encontrei uma combinação exata. Vamos conversar e achar juntos?",
+      "from": "a partir de"
+    },
+    "want": "Quero essa",
+    "see": "Ver experiência",
+    "gift": {
+      "title": "Vai presentear?",
+      "text": "O Cartão Presente Sensória chega em até 24h, com carta e lacre em cera.",
+      "cta": "Ver Cartão Presente"
+    }
+  },
   "lp": {
     "terapias": {
       "eyebrow": "Terapias Corporais",

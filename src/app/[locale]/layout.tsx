@@ -11,6 +11,7 @@ import JsonLd from '@/components/JsonLd';
 import SmoothScroll from '@/components/motion/SmoothScroll';
 import Preloader from '@/components/motion/Preloader';
 import SoundToggle from '@/components/SoundToggle';
+import AdvisorFab from '@/components/advisor/AdvisorFab';
 import MetaPixel from '@/components/MetaPixel';
 import GoogleTag from '@/components/GoogleTag';
 import AttributionCapture from '@/components/AttributionCapture';
@@ -73,6 +74,7 @@ export default async function LocaleLayout({
           <AttributionCapture />
           <Preloader />
           <SoundToggle />
+          <AdvisorFab />
           <SmoothScroll>
             <Header />
             <main>{children}</main>
