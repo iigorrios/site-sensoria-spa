@@ -22,6 +22,11 @@
     "privacy": "Tus datos están seguros y no serán compartidos."
   },
   "advisor": {
+    "teaser": {
+      "text": "¿Con dudas sobre qué experiencia elegir?",
+      "cta": "Haz clic aquí — te ayudo en 3 preguntas.",
+      "dismiss": "Descartar"
+    },
     "fab": "Descubrir mi experiencia",
     "title": "Consultor Sensorial",
     "intro": "Cuéntame qué buscas y te sugiero la experiencia ideal. Son tres preguntas rápidas.",

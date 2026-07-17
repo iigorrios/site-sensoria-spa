@@ -22,6 +22,11 @@
     "privacy": "Your data is safe and will never be shared."
   },
   "advisor": {
+    "teaser": {
+      "text": "Not sure which experience to choose?",
+      "cta": "Click here — I'll help you in 3 questions.",
+      "dismiss": "Dismiss"
+    },
     "fab": "Find my experience",
     "title": "Sensorial Advisor",
     "intro": "Tell me what you are looking for and I will suggest the right experience. Just three quick questions.",

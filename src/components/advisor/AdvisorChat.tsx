@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { ChevronLeft, RotateCcw } from 'lucide-react';
@@ -16,7 +16,9 @@ import {
 import { recommend } from '@/lib/advisor';
 import AdvisorResultCard from '@/components/advisor/AdvisorResultCard';
 
-const STORAGE_KEY = 'sensoria-advisor';
+/** Progresso do assistente na sessão atual. Lido também pelo AdvisorFab, que
+ *  não convida quem já abriu o assistente. */
+export const STORAGE_KEY = 'sensoria-advisor';
 
 type StepId = 'paraQuem' | 'objetivo' | 'tempo' | 'unidade';
 
@@ -45,6 +47,8 @@ export default function AdvisorChat({ onClose }: AdvisorChatProps) {
   const t = useTranslations('advisor');
   const [answers, setAnswers] = useState<AdvisorAnswers>({});
   const [restored, setRestored] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
 
   // Retoma o progresso ao navegar entre páginas (some ao fechar a aba).
   useEffect(() => {
@@ -103,6 +107,24 @@ export default function AdvisorChat({ onClose }: AdvisorChatProps) {
 
   const restart = useCallback(() => setAnswers({}), []);
 
+  // Acompanha a conversa: a próxima pergunta (ou o resultado) nasceria fora da
+  // área visível, já que o conteúdo é bem mais alto que o painel.
+  useEffect(() => {
+    const box = scrollRef.current;
+    if (!box) return;
+    // Espera a animação de entrada assentar: medir antes erra o alvo, porque o
+    // bloco novo ainda está deslocado e o clique move o foco.
+    const timer = setTimeout(() => {
+      const target = done ? resultRef.current : null;
+      const top = target
+        ? // No resultado, alinha pelo TOPO: rolar até o fim pularia o 1º card.
+          target.getBoundingClientRect().top - box.getBoundingClientRect().top + box.scrollTop - 12
+        : box.scrollHeight;
+      box.scrollTo({ top, behavior: 'smooth' });
+    }, 320);
+    return () => clearTimeout(timer);
+  }, [answers, done]);
+
   /** Rótulo exibido de um valor. A unidade guarda o nome próprio (não traduzido);
    *  as demais perguntas guardam a chave do i18n. */
   const labelFor = (step: StepId, value: string): string => {
@@ -114,8 +136,11 @@ export default function AdvisorChat({ onClose }: AdvisorChatProps) {
   if (!restored) return null;
 
   return (
-    <div className="flex h-full flex-col">
-      <div className="flex-1 space-y-4 overflow-y-auto px-5 py-4">
+    // `flex-1` (e não `h-full`): o painel é um flex column que também tem o
+    // header, então `h-full` renderia header + 100% e vazaria por baixo.
+    // `min-h-0` é o que permite ao filho encolher e o overflow-y funcionar.
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div ref={scrollRef} className="min-h-0 flex-1 space-y-4 overflow-y-auto px-5 py-4">
         <Bubble>{t('intro')}</Bubble>
 
         {answered.map((step) => (
@@ -157,6 +182,7 @@ export default function AdvisorChat({ onClose }: AdvisorChatProps) {
 
         {done && (
           <motion.div
+            ref={resultRef}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -204,7 +230,7 @@ export default function AdvisorChat({ onClose }: AdvisorChatProps) {
         )}
       </div>
 
-      <div className="flex items-center justify-between border-t border-sensoria-fog px-5 py-3">
+      <div className="flex flex-none items-center justify-between border-t border-sensoria-fog px-5 py-3">
         <button
           onClick={back}
           disabled={!answered.length}
