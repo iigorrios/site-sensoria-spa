@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { getAttribution, getMetaCookies, newEventId } from '@/lib/tracking';
 import { trackLead } from '@/components/MetaPixel';
+import { trackGenerateLead } from '@/components/GoogleTag';
 import type { ContactInput } from '@/lib/contact-schema';
 
 export type SubmitStatus = 'idle' | 'submitting' | 'success' | 'redirecting' | 'error';
@@ -35,6 +36,14 @@ export function useLeadSubmit() {
 
     // Pixel (browser) — mesmo event_id do CAPI (dedup).
     trackLead(event_id);
+    // GA4 (browser). A conversão do Google Ads NÃO sai daqui — ela é enviada
+    // pelo servidor via API (evita contagem dupla).
+    trackGenerateLead({
+      categoria: payload.categoria,
+      experiencia: payload.experiencia,
+      unidade: payload.unidade,
+      origem: payload.origem,
+    });
 
     try {
       const res = await fetch('/api/contact', {

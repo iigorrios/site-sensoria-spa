@@ -3,6 +3,7 @@ import { getServerSupabase } from '@/lib/supabase';
 import { contactSchema } from '@/lib/contact-schema';
 import { sendLeadEvent } from '@/lib/meta-capi';
 import { sendLeadToKommo } from '@/lib/kommo';
+import { sendConversionToGoogleAds } from '@/lib/google-ads';
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -63,9 +64,10 @@ export async function POST(request: Request) {
   }
 
   // Integrações externas (best-effort, em paralelo). Nenhuma delas quebra o
-  // sucesso do lead — ambas tratam erros internamente e nunca lançam.
+  // sucesso do lead — todas tratam erros internamente e nunca lançam.
   //  • Meta Conversions API (dedup com o Pixel via event_id).
   //  • Kommo CRM (cria contato + lead).
+  //  • Google Ads (conversão pelo servidor: gclid + e-mail/telefone com hash).
   await Promise.allSettled([
     sendLeadEvent({
       eventId: d.event_id || undefined,
@@ -103,6 +105,11 @@ export async function POST(request: Request) {
       fbclid: d.fbclid || undefined,
       referrer: d.referrer || undefined,
       landing_page: d.landing_page || undefined,
+    }),
+    sendConversionToGoogleAds({
+      gclid: d.gclid || undefined,
+      email: d.email,
+      phone: d.telefone || undefined,
     }),
   ]);
 

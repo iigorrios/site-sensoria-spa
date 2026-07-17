@@ -12,6 +12,7 @@ import SmoothScroll from '@/components/motion/SmoothScroll';
 import Preloader from '@/components/motion/Preloader';
 import SoundToggle from '@/components/SoundToggle';
 import MetaPixel from '@/components/MetaPixel';
+import GoogleTag from '@/components/GoogleTag';
 import AttributionCapture from '@/components/AttributionCapture';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -68,6 +69,7 @@ export default async function LocaleLayout({
         <JsonLd data={organizationSchema()} />
         <NextIntlClientProvider messages={messages}>
           <MetaPixel />
+          <GoogleTag />
           <AttributionCapture />
           <Preloader />
           <SoundToggle />
