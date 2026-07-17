@@ -319,20 +319,25 @@ export default function AdminDashboard({ leads, loadError }: Props) {
             <h2 className="font-sans text-xs uppercase tracking-wide2 text-sensoria-graphite/50">
               Leads por dia · {stats.days.length} dias
             </h2>
-            <div className="mt-5 flex h-36 items-end gap-1.5">
+            <div className="mt-5 flex h-36 items-stretch gap-1.5">
               {stats.days.map((d) => (
                 <div
                   key={d.key}
-                  className="group flex flex-1 flex-col items-center justify-end gap-1"
+                  className="group flex flex-1 flex-col items-center gap-1"
                   title={`${d.label}: ${d.count} lead(s)`}
                 >
-                  <span className="font-sans text-[10px] font-medium text-sensoria-graphite/50 opacity-0 transition-opacity group-hover:opacity-100">
-                    {d.count}
-                  </span>
-                  <div
-                    className="w-full rounded-t bg-sensoria-green/80 transition-colors group-hover:bg-sensoria-green"
-                    style={{ height: `${Math.max(d.count ? 6 : 2, (d.count / stats.maxDay) * 100)}%` }}
-                  />
+                  {/* Pista da barra: flex-1 dá altura definida, contra a qual o
+                      height:% da barra resolve. O rótulo fica FORA da pista para
+                      não comer a altura disponível. */}
+                  <div className="flex w-full flex-1 flex-col items-center justify-end">
+                    <span className="font-sans text-[10px] font-medium text-sensoria-graphite/50 opacity-0 transition-opacity group-hover:opacity-100">
+                      {d.count}
+                    </span>
+                    <div
+                      className="w-full rounded-t bg-sensoria-green/80 transition-colors group-hover:bg-sensoria-green"
+                      style={{ height: `${Math.max(d.count ? 6 : 2, (d.count / stats.maxDay) * 100)}%` }}
+                    />
+                  </div>
                   {stats.showDayLabels && (
                     <span className="font-sans text-[9px] text-sensoria-graphite/40">{d.label}</span>
                   )}
